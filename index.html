@@ -1,0 +1,2276 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dragon Ball — Palette de Couleurs</title>
+<link rel="preconnect" href="https://raw.githubusercontent.com" crossorigin>
+<link rel="icon" type="image/png" href="https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Logo_site.png">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg-deep:#0b0a14;--bg-card:#141220;--border-subtle:rgba(160,140,220,0.08);--text-primary:#eeeef0;--text-secondary:#8888a0;--text-muted:#55556a;--accent-db:#ff6b2b;--accent-dbz:#ffc73a;--accent-dbs:#3a8fff;--accent-gt:#e63946;--accent-daima:#b04aff;--radius:16px}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg-deep);-webkit-tap-highlight-color:transparent;color:var(--text-primary);font-family:'Outfit',sans-serif;min-height:100vh;overflow-x:hidden}
+  body::before{content:'';position:fixed;top:0;left:0;right:0;bottom:0;background:
+    radial-gradient(ellipse 80% 50% at 20% 0%,rgba(90,40,160,.07),transparent 60%),
+    radial-gradient(ellipse 70% 60% at 80% 10%,rgba(50,20,120,.06),transparent 55%),
+    radial-gradient(ellipse 60% 50% at 50% 100%,rgba(120,50,180,.05),transparent 50%),
+    radial-gradient(ellipse 90% 40% at 65% 50%,rgba(30,15,80,.08),transparent 60%),
+    radial-gradient(ellipse 50% 50% at 5% 55%,rgba(80,30,140,.04),transparent 50%);
+    pointer-events:none;z-index:0;animation:bgShift 20s ease-in-out infinite alternate}
+  @keyframes bgShift{
+    0%{opacity:.85;filter:hue-rotate(0deg)}
+    50%{opacity:1;filter:hue-rotate(12deg)}
+    100%{opacity:.9;filter:hue-rotate(-8deg)}
+  }
+  body::after{content:'';position:fixed;top:0;left:0;right:0;bottom:0;background:
+    radial-gradient(circle 600px at 25% 35%,rgba(25,15,55,.4),transparent),
+    radial-gradient(circle 500px at 75% 65%,rgba(35,10,60,.35),transparent),
+    radial-gradient(circle 400px at 50% 20%,rgba(15,10,45,.25),transparent);
+    pointer-events:none;z-index:0}
+  .app{position:relative;z-index:1}
+  .header{padding:24px 40px 12px;text-align:center;position:relative}
+  .header::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:80px;height:1px;background:linear-gradient(90deg,transparent,rgba(120,60,200,.4),rgba(160,80,240,.6),rgba(120,60,200,.4),transparent);border-radius:2px}
+  
+  @keyframes gradientShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+    .logo-img{max-width:clamp(160px,30vw,280px);height:auto;display:block;margin:0 auto;filter:drop-shadow(0 2px 12px rgba(255,199,58,.15))}
+  .subtitle{font-size:11px;font-weight:300;color:var(--text-secondary);letter-spacing:3px;text-transform:uppercase;margin-top:6px}
+  .search-container{max-width:400px;margin:12px auto 0;position:relative}
+  .search-input{width:100%;padding:10px 16px 10px 40px;background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:50px;color:var(--text-primary);font-family:'Outfit',sans-serif;font-size:15px;outline:none;transition:border-color .3s,box-shadow .3s}
+  .search-input::placeholder{color:var(--text-muted)}
+  .search-input{font-size:13px}
+  .search-input:focus{border-color:rgba(255,255,255,.15);box-shadow:0 0 0 3px rgba(255,255,255,.03)}
+  .search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--text-muted);pointer-events:none}
+  .search-count{text-align:center;margin-top:6px;font-size:11px;color:var(--text-muted);font-weight:300}
+  .nav-sticky{position:sticky;top:0;z-index:50;background:var(--bg-deep);padding:8px 20px 6px;border-bottom:1px solid var(--border-subtle);backdrop-filter:blur(12px);background:rgba(11,10,20,.9);display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;transition:box-shadow .3s}
+  .nav-sticky.scrolled{box-shadow:0 4px 20px rgba(0,0,0,.4)}
+  .series-nav{display:flex;justify-content:center;gap:6px;flex-wrap:wrap}
+  .series-btn{padding:5px 14px;border-radius:50px;border:1px solid var(--border-subtle);background:transparent;color:var(--text-secondary);font-family:'Outfit',sans-serif;font-size:11px;font-weight:500;cursor:pointer;transition:all .3s;letter-spacing:1px;text-transform:uppercase}
+  .series-btn:hover{background:rgba(255,255,255,.04);color:var(--text-primary)}
+  .series-btn.active{color:var(--text-primary)}
+  .series-btn.active[data-series="all"]{border-color:rgba(255,255,255,.2);background:rgba(255,255,255,.05)}
+  .series-btn.active[data-series="DBZ"]{border-color:var(--accent-dbz);background:rgba(255,199,58,.1);color:var(--accent-dbz)}
+  .series-btn.active[data-series="DB"]{border-color:var(--accent-db);background:rgba(255,107,43,.1);color:var(--accent-db)}
+  .series-btn.active[data-series="DBS"]{border-color:var(--accent-dbs);background:rgba(58,143,255,.1);color:var(--accent-dbs)}
+  .series-btn.active[data-series="GT"]{border-color:var(--accent-gt);background:rgba(230,57,70,.1);color:var(--accent-gt)}
+  .series-btn.active[data-series="Daima"]{border-color:var(--accent-daima);background:rgba(176,74,255,.1);color:var(--accent-daima)}
+  .series-section{max-width:1400px;margin:0 auto;padding:10px 24px 30px}
+  .series-section.hidden{display:none}
+  .series-header{display:flex;align-items:center;gap:12px;margin:20px 0 6px;padding-bottom:8px;border-bottom:1px solid var(--border-subtle)}
+  .series-tag{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;line-height:1;padding:2px 0}
+  .series-tag[data-s="DB"]{color:var(--accent-db)}.series-tag[data-s="DBZ"]{color:var(--accent-dbz)}.series-tag[data-s="DBS"]{color:var(--accent-dbs)}.series-tag[data-s="GT"]{color:var(--accent-gt)}.series-tag[data-s="Daima"]{color:var(--accent-daima)}
+  .series-full-name{font-size:11px;color:var(--text-muted);font-weight:300;letter-spacing:.5px}
+  .arc-header{font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:1.5px;color:var(--text-secondary);margin:16px 0 10px;padding-left:4px;opacity:.7}
+  .cards-grid{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:6px;justify-content:flex-start}
+  .char-card{background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:var(--radius);overflow:hidden;transition:transform .3s ease,box-shadow .3s ease,border-color .3s,max-width .3s ease;animation:fadeUp .5s ease both;display:grid;grid-template-columns:160px 1fr;min-height:0;max-width:420px}
+  .char-card:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,0,0,.3);border-color:rgba(255,255,255,.08)}
+  .char-card.hidden{display:none}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+  .card-image-wrapper{position:relative;overflow:hidden;background:linear-gradient(135deg,#18142a 0%,#1a1538 100%);display:flex;align-items:center;justify-content:center;min-height:200px}
+  .card-image-wrapper img{height:90%;width:auto;max-width:92%;object-fit:contain;object-position:center bottom;filter:drop-shadow(0 4px 16px rgba(0,0,0,.5));transition:opacity .4s ease,transform .4s ease;opacity:0}
+  .card-image-wrapper img.img-ready{opacity:1}
+  .card-image-wrapper img.img-fill{object-fit:cover;width:100%;height:100%;max-width:100%}
+  .char-card:hover .card-image-wrapper img:not(.costume-hidden){transform:scale(1.05)}
+  .card-image-wrapper img.costume-hidden{display:none}
+  .card-series-badge{position:absolute;top:8px;left:8px;padding:3px 9px;border-radius:50px;font-family:'Bebas Neue',sans-serif;font-size:10px;letter-spacing:2px;backdrop-filter:blur(10px);z-index:2}
+  .card-series-badge[data-s="DB"]{background:rgba(255,107,43,.25);color:var(--accent-db);border:1px solid rgba(255,107,43,.3)}
+  .card-series-badge[data-s="DBZ"]{background:rgba(255,199,58,.25);color:var(--accent-dbz);border:1px solid rgba(255,199,58,.3)}
+  .card-series-badge[data-s="DBS"]{background:rgba(58,143,255,.25);color:var(--accent-dbs);border:1px solid rgba(58,143,255,.3)}
+  .card-series-badge[data-s="GT"]{background:rgba(230,57,70,.25);color:var(--accent-gt);border:1px solid rgba(230,57,70,.3)}
+  .card-series-badge[data-s="Daima"]{background:rgba(176,74,255,.25);color:var(--accent-daima);border:1px solid rgba(176,74,255,.3)}
+
+
+  /* Transformation flash */
+  .card-image-wrapper::after{content:'';position:absolute;inset:0;opacity:0;z-index:4;pointer-events:none;transition:opacity .1s}
+  .card-image-wrapper.flash-Base::after{background:radial-gradient(circle at center,rgba(160,180,220,.4),transparent 70%);opacity:1;animation:transFlash .5s ease-out forwards}
+  .card-image-wrapper.flash-SSJ::after{background:radial-gradient(circle at center,rgba(255,220,60,.5),transparent 70%);opacity:1;animation:transFlash .5s ease-out forwards}
+  .card-image-wrapper.flash-SSJ2::after{background:radial-gradient(circle at center,rgba(255,230,80,.5),rgba(255,200,40,.15) 50%,transparent 70%);opacity:1;animation:transFlash .55s ease-out forwards}
+  .card-image-wrapper.flash-SSJ3::after{background:radial-gradient(circle at center,rgba(255,190,30,.55),rgba(255,170,20,.2) 50%,transparent 70%);opacity:1;animation:transFlash .6s ease-out forwards}
+  .card-image-wrapper.flash-SSG::after{background:radial-gradient(circle at center,rgba(230,57,70,.5),rgba(200,30,50,.15) 50%,transparent 70%);opacity:1;animation:transFlash .5s ease-out forwards}
+  .card-image-wrapper.flash-SSB::after{background:radial-gradient(circle at center,rgba(58,143,255,.5),rgba(30,100,230,.15) 50%,transparent 70%);opacity:1;animation:transFlash .5s ease-out forwards}
+  .card-image-wrapper.flash-UI::after{background:radial-gradient(circle at center,rgba(180,180,255,.5),rgba(140,140,220,.15) 50%,transparent 70%);opacity:1;animation:transFlash .5s ease-out forwards}
+  .card-image-wrapper.flash-MUI::after{background:radial-gradient(circle at center,rgba(230,230,255,.6),rgba(200,200,240,.2) 40%,transparent 70%);opacity:1;animation:transFlashMUI .6s ease-out forwards}
+  
+  
+
+  .card-image-wrapper.flash-Majin::after{background:radial-gradient(circle at center,rgba(180,50,180,.5),rgba(140,20,140,.2) 50%,transparent 70%);opacity:1;animation:transFlash .55s ease-out forwards}
+  .card-image-wrapper.flash-Oozaru::after{background:radial-gradient(circle at center,rgba(200,144,64,.5),rgba(139,90,43,.2) 50%,transparent 70%);opacity:1;animation:transFlash .6s ease-out forwards}
+  .card-image-wrapper.flash-SSJ4::after{background:radial-gradient(circle at center,rgba(216,24,96,.5),rgba(180,20,60,.15) 50%,transparent 70%);opacity:1;animation:transFlash .55s ease-out forwards}
+  .card-image-wrapper.flash-SSJ4-Mini::after,.card-image-wrapper.flash-SSJ4-Adulte::after{background:radial-gradient(circle at center,rgba(180,36,96,.5),rgba(150,20,60,.15) 50%,transparent 70%);opacity:1;animation:transFlash .55s ease-out forwards}
+  @keyframes transFlashMUI{0%{opacity:1;transform:scale(.7)}20%{opacity:1;transform:scale(1.15)}50%{opacity:.7;transform:scale(1.05)}100%{opacity:0;transform:scale(1.4)}}
+  @keyframes transFlash{0%{opacity:1;transform:scale(.8)}30%{opacity:.8;transform:scale(1.1)}100%{opacity:0;transform:scale(1.3)}}
+  .costume-img.transform-pulse{animation:imgPulse .4s ease-out}
+  @keyframes imgPulse{0%{transform:scale(.92);filter:drop-shadow(0 4px 16px rgba(0,0,0,.5)) brightness(1.8)}40%{transform:scale(1.06);filter:drop-shadow(0 4px 16px rgba(0,0,0,.5)) brightness(1.2)}100%{transform:scale(1);filter:drop-shadow(0 4px 16px rgba(0,0,0,.5)) brightness(1)}}
+
+  /* Lightning bolts for SSJ2/SSJ3 */
+  .lightning-container{position:absolute;inset:0;z-index:5;pointer-events:none;overflow:hidden}
+  .lightning{position:absolute;width:2px;background:linear-gradient(180deg,transparent,rgba(255,255,180,.9),rgba(200,220,255,.95),transparent);border-radius:2px;opacity:0;filter:blur(0.5px) drop-shadow(0 0 4px rgba(255,255,180,.8))}
+  .card-image-wrapper.flash-SSJ2 .lightning,
+  .card-image-wrapper.flash-SSJ3 .lightning{animation:lightningBolt var(--lt-dur, .3s) var(--lt-delay, 0s) ease-out forwards}
+  @keyframes lightningBolt{
+    0%{opacity:0;transform:scaleY(0) rotate(var(--lt-rot, 0deg))}
+    15%{opacity:1;transform:scaleY(1) rotate(var(--lt-rot, 0deg))}
+    30%{opacity:.9;transform:scaleY(1) rotate(var(--lt-rot, 0deg)) translateX(2px)}
+    45%{opacity:1;transform:scaleY(1) rotate(var(--lt-rot, 0deg)) translateX(-1px)}
+    70%{opacity:.6;transform:scaleY(.9) rotate(var(--lt-rot, 0deg))}
+    100%{opacity:0;transform:scaleY(.5) rotate(var(--lt-rot, 0deg))}
+  }
+  .lightning-branch{position:absolute;width:1.5px;background:linear-gradient(180deg,rgba(255,255,200,.8),transparent);border-radius:1px;opacity:0;filter:blur(0.3px)}
+  .card-image-wrapper.flash-SSJ2 .lightning-branch,
+  .card-image-wrapper.flash-SSJ3 .lightning-branch{animation:branchFlash var(--br-dur, .2s) var(--br-delay, .05s) ease-out forwards}
+  @keyframes branchFlash{
+    0%{opacity:0;transform:scaleY(0) rotate(var(--br-rot, 20deg))}
+    20%{opacity:.8;transform:scaleY(1) rotate(var(--br-rot, 20deg))}
+    100%{opacity:0;transform:scaleY(.6) rotate(var(--br-rot, 20deg))}
+  }
+  /* Form pills */
+  .form-pills{display:grid;grid-template-columns:repeat(2,auto);gap:3px;margin-top:8px;justify-content:start}
+  .form-pills.no-forms{display:none}
+  .form-pill{padding:4px 10px;border-radius:50px;font-family:'Bebas Neue',sans-serif;font-size:10px;letter-spacing:1.5px;cursor:pointer;transition:all .25s;border:1.5px solid;backdrop-filter:blur(8px)}
+  .form-pill.active[data-form="Base"]{background:rgba(100,120,160,.35);color:#c0d0e8;border-color:rgba(100,120,160,.6)}
+  .form-pill:not(.active)[data-form="Base"]{background:rgba(100,120,160,.1);color:rgba(160,176,208,.5);border-color:rgba(100,120,160,.2)}
+  .form-pill:not(.active)[data-form="Base"]:hover{background:rgba(100,120,160,.25);color:#a0b0d0;border-color:rgba(100,120,160,.4)}
+  .form-pill.active[data-form="SSJ"]{background:rgba(255,199,58,.25);color:#ffc73a;border-color:rgba(255,199,58,.5)}
+  .form-pill:not(.active)[data-form="SSJ"]{background:rgba(255,199,58,.08);color:rgba(255,199,58,.4);border-color:rgba(255,199,58,.15)}
+  .form-pill:not(.active)[data-form="SSJ"]:hover{background:rgba(255,199,58,.2);color:#ffc73a;border-color:rgba(255,199,58,.35)}
+  .form-pill.active[data-form="SSG"]{background:rgba(230,57,70,.25);color:#e63946;border-color:rgba(230,57,70,.5)}
+  .form-pill:not(.active)[data-form="SSG"]{background:rgba(230,57,70,.08);color:rgba(230,57,70,.4);border-color:rgba(230,57,70,.15)}
+  .form-pill:not(.active)[data-form="SSG"]:hover{background:rgba(230,57,70,.2);color:#e63946;border-color:rgba(230,57,70,.35)}
+  .form-pill.active[data-form="SSB"]{background:rgba(58,143,255,.25);color:#3a8fff;border-color:rgba(58,143,255,.5)}
+  .form-pill:not(.active)[data-form="SSB"]{background:rgba(58,143,255,.08);color:rgba(58,143,255,.4);border-color:rgba(58,143,255,.15)}
+  .form-pill:not(.active)[data-form="SSB"]:hover{background:rgba(58,143,255,.2);color:#3a8fff;border-color:rgba(58,143,255,.35)}
+  .form-pill.active[data-form="UI"]{background:rgba(180,180,220,.3);color:#c8c8f0;border-color:rgba(180,180,220,.5)}
+  .form-pill:not(.active)[data-form="UI"]{background:rgba(180,180,220,.08);color:rgba(180,180,220,.4);border-color:rgba(180,180,220,.15)}
+  .form-pill:not(.active)[data-form="UI"]:hover{background:rgba(180,180,220,.2);color:#c8c8f0;border-color:rgba(180,180,220,.35)}
+  .form-pill.active[data-form="MUI"]{background:rgba(220,220,240,.3);color:#e8e8ff;border-color:rgba(220,220,240,.6)}
+  .form-pill:not(.active)[data-form="MUI"]{background:rgba(220,220,240,.08);color:rgba(220,220,240,.4);border-color:rgba(220,220,240,.15)}
+  .form-pill:not(.active)[data-form="MUI"]:hover{background:rgba(220,220,240,.25);color:#e8e8ff;border-color:rgba(220,220,240,.4)}
+  .form-pill.active[data-form="SSJ4"]{background:rgba(216,24,96,.25);color:#d81860;border-color:rgba(216,24,96,.5)}
+  .form-pill:not(.active)[data-form="SSJ4"]{background:rgba(216,24,96,.08);color:rgba(216,24,96,.4);border-color:rgba(216,24,96,.15)}
+  .form-pill:not(.active)[data-form="SSJ4"]:hover{background:rgba(216,24,96,.2);color:#d81860;border-color:rgba(216,24,96,.35)}
+  .form-pill.active[data-form="SSJ4 Mini"]{background:rgba(180,36,96,.25);color:#b42460;border-color:rgba(180,36,96,.5)}
+  .form-pill:not(.active)[data-form="SSJ4 Mini"]{background:rgba(180,36,96,.08);color:rgba(180,36,96,.4);border-color:rgba(180,36,96,.15)}
+  .form-pill:not(.active)[data-form="SSJ4 Mini"]:hover{background:rgba(180,36,96,.2);color:#b42460;border-color:rgba(180,36,96,.35)}
+  .form-pill.active[data-form="SSJ4 Adulte"]{background:rgba(156,24,84,.3);color:#9c1854;border-color:rgba(156,24,84,.5)}
+  .form-pill:not(.active)[data-form="SSJ4 Adulte"]{background:rgba(156,24,84,.08);color:rgba(156,24,84,.4);border-color:rgba(156,24,84,.15)}
+  .form-pill:not(.active)[data-form="SSJ4 Adulte"]:hover{background:rgba(156,24,84,.2);color:#9c1854;border-color:rgba(156,24,84,.35)}
+  .form-pill.active[data-form="Majin"]{background:rgba(180,50,180,.3);color:#cc60cc;border-color:rgba(180,50,180,.5)}
+  .form-pill:not(.active)[data-form="Majin"]{background:rgba(180,50,180,.08);color:rgba(180,50,180,.4);border-color:rgba(180,50,180,.15)}
+  .form-pill:not(.active)[data-form="Majin"]:hover{background:rgba(180,50,180,.2);color:#cc60cc;border-color:rgba(180,50,180,.35)}
+  .form-pill.active[data-form="Oozaru"]{background:rgba(139,90,43,.3);color:#c89040;border-color:rgba(200,144,64,.5)}
+  .form-pill:not(.active)[data-form="Oozaru"]{background:rgba(139,90,43,.08);color:rgba(200,144,64,.4);border-color:rgba(200,144,64,.15)}
+  .form-pill:not(.active)[data-form="Oozaru"]:hover{background:rgba(139,90,43,.2);color:#c89040;border-color:rgba(200,144,64,.35)}
+  .form-pill.active[data-form="SSJ2"]{background:rgba(255,199,58,.3);color:#ffdb4a;border-color:rgba(255,219,74,.5)}
+  .form-pill:not(.active)[data-form="SSJ2"]{background:rgba(255,199,58,.08);color:rgba(255,219,74,.4);border-color:rgba(255,219,74,.15)}
+  .form-pill:not(.active)[data-form="SSJ2"]:hover{background:rgba(255,219,74,.2);color:#ffdb4a;border-color:rgba(255,219,74,.35)}
+  .form-pill.active[data-form="SSJ3"]{background:rgba(255,170,30,.3);color:#ffaa1e;border-color:rgba(255,170,30,.5)}
+  .form-pill:not(.active)[data-form="SSJ3"]{background:rgba(255,170,30,.08);color:rgba(255,170,30,.4);border-color:rgba(255,170,30,.15)}
+  .form-pill:not(.active)[data-form="SSJ3"]:hover{background:rgba(255,170,30,.2);color:#ffaa1e;border-color:rgba(255,170,30,.35)}
+
+  /* Costume dots — big */
+  .costume-nav{position:absolute;bottom:6px;left:50%;transform:translateX(-50%);display:flex;gap:5px;z-index:3}
+  .costume-dot{width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.3);cursor:pointer;transition:all .2s;padding:0}
+  .costume-dot:hover{background:rgba(255,255,255,.35);border-color:rgba(255,255,255,.5)}
+  .costume-dot.active{background:rgba(255,255,255,.85);border-color:#fff;box-shadow:0 0 8px rgba(255,255,255,.35)}
+  .costume-nav.single{display:none}
+
+  /* Costume arrows — big */
+  .costume-arrow{position:absolute;top:50%;transform:translateY(-50%);width:30px;height:30px;border-radius:50%;background:rgba(0,0,0,.5);border:1.5px solid rgba(255,255,255,.2);color:#fff;font-size:15px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:3;transition:all .2s;opacity:0;backdrop-filter:blur(6px)}
+  .card-image-wrapper:hover .costume-arrow{opacity:1}
+  .costume-arrow:hover{background:rgba(0,0,0,.75);border-color:rgba(255,255,255,.4);transform:translateY(-50%) scale(1.1)}
+  .costume-arrow.prev{left:6px}
+  .costume-arrow.next{right:6px}
+  .costume-arrow.single-costume{display:none}
+
+  .card-body{padding:14px;display:flex;flex-direction:column;overflow:hidden}
+  .char-name{font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:2px;line-height:1;display:flex;align-items:baseline;gap:6px}
+  .char-subtitle{font-size:11px;color:var(--text-muted);font-weight:600;font-family:'Outfit',sans-serif;letter-spacing:.3px}
+  .char-variant{font-size:10px;color:var(--text-muted);font-weight:300;letter-spacing:.5px;margin-bottom:6px;margin-top:1px;min-height:12px;display:flex;align-items:center;gap:6px}
+  .variant-label{display:none}
+  .costume-counter{font-size:10px;color:var(--text-muted);font-weight:400;letter-spacing:.5px}
+  .colors-toggle{display:flex;align-items:center;gap:5px;cursor:pointer;background:none;border:1px solid rgba(255,255,255,.1);border-radius:6px;color:var(--text-muted);font-size:9px;font-family:'Outfit',sans-serif;padding:3px 8px;transition:all .2s;margin-top:4px;margin-bottom:4px;width:fit-content}
+  .colors-toggle:hover{border-color:rgba(255,255,255,.25);color:var(--text-secondary)}
+  .colors-toggle .toggle-arrow{transition:transform .2s;font-size:8px}
+  .colors-toggle.open .toggle-arrow{transform:rotate(90deg)}
+    .colors-row{display:grid;grid-template-columns:repeat(3,26px);gap:3px;align-content:start}
+  .colors-toggle{display:none!important}
+  
+  .color-swatch{width:26px;height:26px;border-radius:3px;border:1.5px solid rgba(255,255,255,.1);flex-shrink:0;transition:transform .2s,border-color .2s}
+  .color-swatch:hover{transform:scale(1.25);border-color:rgba(255,255,255,.4);z-index:2;position:relative}
+  .color-info{font-size:11px;color:var(--text-primary);height:16px;line-height:16px;font-weight:600;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .color-hex{font-size:9px;font-family:'Outfit',monospace;color:var(--text-muted);letter-spacing:.3px;margin-left:auto;flex-shrink:0}
+  .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--bg-card);border:1px solid rgba(255,255,255,.1);color:var(--text-primary);padding:12px 24px;border-radius:50px;font-size:13px;font-weight:500;opacity:0;transition:transform .4s cubic-bezier(.16,1,.3,1),opacity .4s;z-index:100;backdrop-filter:blur(12px);box-shadow:0 10px 40px rgba(0,0,0,.5);pointer-events:none}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  .no-results{text-align:center;padding:40px 20px;color:var(--text-muted);font-size:15px;display:none}
+  .no-results.visible{display:block}
+  .no-results span{display:block;font-size:48px;margin-bottom:16px}
+  .footer{text-align:center;padding:16px 20px 14px;color:var(--text-muted);font-size:10px;font-weight:300;letter-spacing:.5px;border-top:1px solid var(--border-subtle);margin:0 24px}
+  
+  
+
+  /* ═══ RESPONSIVE ═══ */
+  /* Tablet landscape */
+  @media(max-width:1024px){
+    .series-section{padding:16px 20px 40px}
+    .char-card{max-width:400px}
+  }
+  /* Tablet portrait */
+  @media(max-width:768px){
+    .header{padding:40px 20px 24px}
+    .series-section{padding:12px 14px 36px}
+    .cards-grid{gap:10px;justify-content:center}
+    .char-card{max-width:100%;grid-template-columns:140px 1fr}
+    .card-image-wrapper{min-height:180px}
+    .series-tag{font-size:22px}
+    .search-container{max-width:90%;margin:24px auto 0}
+    .series-nav{gap:5px}
+    .series-btn{padding:6px 14px;font-size:12px}
+  }
+  /* Mobile */
+  @media(max-width:500px){
+    .header{padding:30px 14px 20px}
+    .subtitle{font-size:11px;letter-spacing:3px}
+    .search-input{padding:12px 16px 12px 42px;font-size:14px}
+    .series-section{padding:8px 10px 30px}
+    .cards-grid{gap:8px}
+    .char-card{max-width:100%;grid-template-columns:120px 1fr}
+    .card-image-wrapper{min-height:160px}
+    .card-body{padding:10px}
+    .char-name{font-size:15px}
+    .char-subtitle{font-size:9px}
+    .char-variant{font-size:9px}
+    .costume-counter{font-size:9px}
+    .color-swatch{width:24px;height:24px}
+    .colors-row{grid-template-columns:repeat(3,24px)}
+    .color-hex{font-size:8px}
+    .costume-arrow{width:24px;height:24px;font-size:13px}
+    .form-pill{padding:3px 8px;font-size:9px}
+    .colors-toggle{font-size:8px;padding:2px 6px}
+    .series-tag{font-size:18px}
+    .arc-header{font-size:15px;margin:20px 0 12px}
+    .series-nav{gap:3px}
+    .series-btn{padding:5px 10px;font-size:11px}
+  }
+  /* Very small mobile */
+  @media(max-width:360px){
+    .char-card,
+    .card-image-wrapper{min-height:140px}
+    .char-name{font-size:13px}
+    .card-body{padding:8px}
+  }
+  /* Touch device: always show arrows */
+  @media(hover:none){
+    .costume-arrow{opacity:.7}
+    .costume-arrow:active{opacity:1;transform:translateY(-50%) scale(1.1)}
+  }
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <img src="https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/SP0.png" alt="Dragon Ball Sparking Zero" class="logo-img">
+    <div class="subtitle">Répertoire des couleurs</div>
+    <div class="search-container">
+      <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" class="search-input" id="searchInput" placeholder="Rechercher un personnage, une forme, une série..." autocomplete="off">
+    </div>
+    <div class="search-count" id="searchCount"></div>
+  </header>
+  <div class="nav-sticky" id="navSticky">
+    <nav class="series-nav">
+      <button class="series-btn active" data-series="all">Toutes</button>
+      <button class="series-btn" data-series="DB">DB</button>
+      <button class="series-btn" data-series="DBZ">DBZ</button>
+      <button class="series-btn" data-series="DBS">DBS</button>
+      <button class="series-btn" data-series="GT">GT</button>
+      <button class="series-btn" data-series="Daima">Daima</button>
+    </nav>
+  </div>
+  <main id="mainContent"></main>
+  <div class="no-results" id="noResults"><span>🔍</span>Aucun personnage trouvé</div>
+  <div class="toast" id="toast"></div>
+  <footer class="footer">DRAGON BALL COLOR REFERENCE — Palette extraite des assets officiels</footer>
+</div>
+<script>
+const IMG = {
+  "Goku_DBZ_debut_0.png": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_Debut_Z/Goku_Debut_Z_0.png",
+  "Goku_DBZ_debut_1.png": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_Debut_Z/Goku_Debut_Z_1.png",
+  "Goku_DBZ_debut_2.png": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_Debut_Z/Goku_Debut_Z_2.png",
+  "Goku_DBZ_debut_3.png": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_Debut_Z/Goku_Debut_Z_3.png",
+  "Goku_DBZ_debut_4.png": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_Debut_Z/Goku_Debut_Z_4.png",
+  "Goku_DBZ_mid_Base_-_0.png": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_Mid/Base%20-%200.png",
+  "Goku_DBZ_mid_Base_-_1.png": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_Mid/Base%20-%201.png",
+  "Goku_DBZ_mid_Base_-_2.png": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_Mid/Base%20-%202.png",
+  "Goku_DBZ_mid_Base_-_3.png": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_Mid/Base%20-%203.png",
+  "Goku_DBZ_mid_Base_-_4.png": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_Mid/Base%20-%204.png",
+  "Goku_DBZ_mid_SSJ_-_0.png": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_Mid/SSJ%20-%200.png",
+  "Goku_DBZ_mid_SSJ_-_1.png": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_Mid/SSJ%20-%201.png",
+  "Goku_DBZ_mid_SSJ_-_2.png": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_Mid/SSJ%20-%202.png",
+  "Goku_DBZ_mid_SSJ_-_3.png": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_Mid/SSJ%20-%203.png",
+  "Goku_DBZ_mid_SSJ_-_4.png": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_Mid/SSJ%20-%204.png",
+
+  "Goku_DBS_Base_0": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_DBS/Base_0.png",
+  "Goku_DBS_Base_1": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_DBS/Base_1.png",
+  "Goku_DBS_Base_2": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_DBS/Base_2.png",
+  "Goku_DBS_Base_3": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_DBS/Base_3.png",
+  "Goku_DBS_Base_4": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_DBS/Base_4.png",
+  "Goku_DBS_Base_5": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_DBS/Base_5.png",
+  "Goku_DBS_Base_6": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_DBS/Base_6.png",
+  "Goku_DBS_SSJ_0": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_DBS/SSJ_0.png",
+  "Goku_DBS_SSJ_1": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_DBS/SSJ_1.png",
+  "Goku_DBS_SSJ_2": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_DBS/SSJ_2.png",
+  "Goku_DBS_SSJ_3": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_DBS/SSJ_3.png",
+  "Goku_DBS_SSJ_4": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_DBS/SSJ_4.png",
+  "Goku_DBS_SSJ_5": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_DBS/SSJ_5.png",
+  "Goku_DBS_SSJ_6": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_DBS/SSJ_6.png",
+  "Goku_DBS_SSG_0": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_DBS/SSG_0.png",
+  "Goku_DBS_SSG_1": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_DBS/SSG_1.png",
+  "Goku_DBS_SSG_2": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_DBS/SSG_2.png",
+  "Goku_DBS_SSG_3": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_DBS/SSG_3.png",
+  "Goku_DBS_SSG_4": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_DBS/SSG_4.png",
+  "Goku_DBS_SSG_5": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_DBS/SSG_5.png",
+  "Goku_DBS_SSG_6": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_DBS/SSG_6.png",
+  "Goku_DBS_SSB_0": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_DBS/SSB_0.png",
+  "Goku_DBS_SSB_1": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_DBS/SSB_1.png",
+  "Goku_DBS_SSB_2": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_DBS/SSB_2.png",
+  "Goku_DBS_SSB_3": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_DBS/SSB_3.png",
+  "Goku_DBS_SSB_4": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_DBS/SSB_4.png",
+  "Goku_DBS_SSB_5": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_DBS/SSB_5.png",
+  "Goku_DBS_SSB_6": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_DBS/SSB_6.png",
+  "Goku_EOZ_Base_0": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_End_Of_Z/Base_0.png",
+  "Goku_EOZ_Base_1": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_End_Of_Z/Base_1.png",
+  "Goku_EOZ_Base_2": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_End_Of_Z/Base_2.png",
+  "Goku_EOZ_SSJ_0": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_End_Of_Z/SSJ_0.png",
+  "Goku_EOZ_SSJ_1": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_End_Of_Z/SSJ_1.png",
+  "Goku_EOZ_SSJ_2": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_End_Of_Z/SSJ_2.png",
+  "Goku_EOZ_SSJ2_0": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_End_Of_Z/SSJ2_0.png",
+  "Goku_EOZ_SSJ2_1": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_End_Of_Z/SSJ2_1.png",
+  "Goku_EOZ_SSJ2_2": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_End_Of_Z/SSJ2_2.png",
+  "Goku_EOZ_SSJ3_0": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_End_Of_Z/SSJ3_0.png",
+  "Goku_EOZ_SSJ3_1": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_End_Of_Z/SSJ3_1.png",
+  "Goku_EOZ_SSJ3_2": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_End_Of_Z/SSJ3_2.png",
+  "Goku_DBS_UI_0": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_DBS/UI_0.png",
+  "Goku_DBS_UI_1": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_DBS/UI_1.png",
+  "Goku_DBS_UI_2": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_DBS/UI_2.png",
+  "Goku_DBS_UI_3": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_DBS/UI_3.png",
+  "Goku_DBS_UI_4": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_DBS/UI_4.png",
+  "Goku_DBS_UI_5": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_DBS/UI_5.png",
+  "Goku_DBS_MUI_0": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_DBS/MUI_0.png",
+  "Goku_DBS_MUI_1": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_DBS/MUI_1.png",
+  "Goku_DBS_MUI_2": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_DBS/MUI_2.png",
+  "Goku_DBS_MUI_3": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_DBS/MUI_3.png",
+  "Goku_DBS_MUI_4": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_DBS/MUI_4.png",
+  "Goku_DBS_MUI_5": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_DBS/MUI_5.png",
+  "Goku_GT_Base": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_GT/GT_Base.png",
+  "Goku_GT_SSJ": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_GT/GT_SSJ.png",
+  "Goku_GT_SSJ3": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_GT/GT_SSJ3.png",
+  "Goku_GT_SSJ4": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_GT/GT_SSJ4.png",
+  "Kid_Goku_DB": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_GT/Kid_Goku.png",
+  "Goku_Daima_Base": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_Daima/Goku_Daima_Base.png",
+  "Goku_Daima_SSJ": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_Daima/Goku_Daima_SSJ.png",
+  "Goku_Daima_SSJ4_Mini": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_Daima/Goku_Daima_SSJ4_Mini.png",
+  "Goku_Daima_SSJ4_Adulte": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Goku/Goku_Daima/Goku_Daima_SSJ4_Adulte.png",
+  "VGT_Det_0": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Vegeta/Detecteur/VGT_Detecteur_0.png",
+  "VGT_Det_1": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Vegeta/Detecteur/VGT_Detecteur_1.png",
+  "VGT_Det_2": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Vegeta/Detecteur/VGT_Detecteur_2.png",
+  "VGT_Det_3": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Vegeta/Detecteur/VGT_Detecteur_3.png",
+  "VGT_Det_Oozaru_0": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Vegeta/Detecteur/VGT_Detecteur_Oozaru_0.png",
+  "VGT_Det_Oozaru_1": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Vegeta/Detecteur/VGT_Detecteur_Oozaru_1.png",
+  "VGT_Det_Oozaru_2": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Vegeta/Detecteur/VGT_Detecteur_Oozaru_2.png",
+  "VGT_Det_Oozaru_3": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Vegeta/Detecteur/VGT_Detecteur_Oozaru_3.png",
+  "VGT_Base_DebutZ_0": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Vegeta/Debut_DBZ/VGT_Base_DebutZ_0.png",
+  "VGT_Base_DebutZ_1": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Vegeta/Debut_DBZ/VGT_Base_DebutZ_1.png",
+  "VGT_Base_DebutZ_2": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Vegeta/Debut_DBZ/VGT_Base_DebutZ_2.png",
+  "VGT_Base_DebutZ_3": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Vegeta/Debut_DBZ/VGT_Base_DebutZ_3.png",
+  "VGT_SSJ_DebutZ_0": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Vegeta/Debut_DBZ/VGT_SSJ_DebutZ_0.png",
+  "VGT_SSJ_DebutZ_1": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Vegeta/Debut_DBZ/VGT_SSJ_DebutZ_1.png",
+  "VGT_SSJ_DebutZ_2": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Vegeta/Debut_DBZ/VGT_SSJ_DebutZ_2.png",
+  "VGT_SSJ_DebutZ_3": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Vegeta/Debut_DBZ/VGT_SSJ_DebutZ_3.png",
+  "Super_Vegeta_0": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Vegeta/Debut_DBZ/Super_Vegeta_0.png",
+  "Super_Vegeta_1": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Vegeta/Debut_DBZ/Super_Vegeta_1.png",
+  "Super_Vegeta_2": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Vegeta/Debut_DBZ/Super_Vegeta_2.png",
+  "Super_Vegeta_3": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Vegeta/Debut_DBZ/Super_Vegeta_3.png",
+  "VGT_EOZ_Base_0": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Vegeta/End_Of_Z/Vegeta_EoZ_Base_0.png",
+  "VGT_EOZ_Base_1": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Vegeta/End_Of_Z/Vegeta_EoZ_Base_1.png",
+  "VGT_EOZ_Base_2": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Vegeta/End_Of_Z/Vegeta_EoZ_Base_2.png",
+  "VGT_EOZ_SSJ_0": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Vegeta/End_Of_Z/Vegeta_EoZ_SSJ_0.png",
+  "VGT_EOZ_SSJ_1": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Vegeta/End_Of_Z/Vegeta_EoZ_SSJ_1.png",
+  "VGT_EOZ_SSJ_2": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Vegeta/End_Of_Z/Vegeta_EoZ_SSJ_2.png",
+  "VGT_EOZ_SSJ2_0": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Vegeta/End_Of_Z/Vegeta_EoZ_SSJ2_0.png",
+  "VGT_EOZ_SSJ2_1": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Vegeta/End_Of_Z/Vegeta_EoZ_SSJ2_1.png",
+  "VGT_EOZ_SSJ2_2": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Vegeta/End_Of_Z/Vegeta_EoZ_SSJ2_2.png",
+  "Majin_Vegeta_0": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Vegeta/End_Of_Z/Majin_Vegeta_0.png",
+  "Majin_Vegeta_1": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Vegeta/End_Of_Z/Majin_Vegeta_1.png",
+  "VGT_DBS_Base_0": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Vegeta/DBS_GT/VGT_DBS_Base_0.png",
+  "VGT_DBS_Base_1": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Vegeta/DBS_GT/VGT_DBS_Base_1.png",
+  "VGT_DBS_Base_2": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Vegeta/DBS_GT/VGT_DBS_Base_2.png",
+  "VGT_DBS_Base_3": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Vegeta/DBS_GT/VGT_DBS_Base_3.png",
+  "VGT_DBS_SSJ_0": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Vegeta/DBS_GT/VGT_DBS_SSJ_0.png",
+  "VGT_DBS_SSJ_1": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Vegeta/DBS_GT/VGT_DBS_SSJ_1.png",
+  "VGT_DBS_SSJ_2": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Vegeta/DBS_GT/VGT_DBS_SSJ_2.png",
+  "VGT_DBS_SSJ_3": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Vegeta/DBS_GT/VGT_DBS_SSJ_3.png",
+  "VGT_DBS_SSG_0": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Vegeta/DBS_GT/VGT_DBS_SSG_0.png",
+  "VGT_DBS_SSG_1": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Vegeta/DBS_GT/VGT_DBS_SSG_1.png",
+  "VGT_DBS_SSG_2": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Vegeta/DBS_GT/VGT_DBS_SSG_2.png",
+  "VGT_DBS_SSG_3": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Vegeta/DBS_GT/VGT_DBS_SSG_3.png",
+  "VGT_DBS_SSB_0": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Vegeta/DBS_GT/VGT_DBS_SSB_0.png",
+  "VGT_DBS_SSB_1": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Vegeta/DBS_GT/VGT_DBS_SSB_1.png",
+  "VGT_DBS_SSB_2": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Vegeta/DBS_GT/VGT_DBS_SSB_2.png",
+  "VGT_DBS_SSB_3": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Vegeta/DBS_GT/VGT_DBS_SSB_3.png",
+  "VGT_SSJ4": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Vegeta/DBS_GT/VGT_SSJ4.png",
+  "VGT_Daima_Mini_Base": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Vegeta/Daima/VGT_Daima_Mini_Base.png",
+  "VGT_Daima_Mini_SSJ": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Vegeta/Daima/VGT_Daima_Mini_SSJ.png",
+  "VGT_Daima_Mini_SSJ2": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Vegeta/Daima/VGT_Daima_Mini_SSJ2.png",
+  "VGT_Daima_Mini_SSJ3": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Vegeta/Daima/VGT_Daima_Mini_SSJ3.png",
+  "VGT_Daima_SSJ3": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Vegeta/Daima/VGT_Daima_SSJ3.png",
+  "Gohan_Enfant_0": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Gohan/Gohan_Enfant_0.png",
+  "Gohan_Enfant_1": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Gohan/Gohan_Enfant_1.png",
+  "Gohan_Enfant_2": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Gohan/Gohan_Enfant_2.png",
+  "Gohan_Ado_Base_0": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Gohan/Gohan_Ado_Base_0.png",
+  "Gohan_Ado_Base_1": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Gohan/Gohan_Ado_Base_1.png",
+  "Gohan_Ado_Base_2": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Gohan/Gohan_Ado_Base_2.png",
+  "Gohan_Ado_Base_3": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Gohan/Gohan_Ado_Base_3.png",
+  "Gohan_Ado_SSJ_0": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Gohan/Gohan_Ado_SSJ_0.png",
+  "Gohan_Ado_SSJ_1": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Gohan/Gohan_Ado_SSJ_1.png",
+  "Gohan_Ado_SSJ_2": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Gohan/Gohan_Ado_SSJ_2.png",
+  "Gohan_Ado_SSJ_3": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Gohan/Gohan_Ado_SSJ_3.png",
+  "Gohan_Ado_SSJ2_0": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Gohan/Gohan_Ado_SSJ2_0.png",
+  "Gohan_Ado_SSJ2_1": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Gohan/Gohan_Ado_SSJ2_1.png",
+  "Gohan_Ado_SSJ2_2": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Gohan/Gohan_Ado_SSJ2_2.png",
+  "Gohan_Ado_SSJ2_3": "https://raw.githubusercontent.com/TFlockers/Sparking0_Color_Site/main/Pictures/Gohan/Gohan_Ado_SSJ2_3.png",
+};
+
+
+// Images are lazy-loaded — no preload needed
+
+const SERIES_INFO = {
+  DB:{full:"Dragon Ball",tag:"DB"},DBZ:{full:"Dragon Ball Z",tag:"DBZ"},
+  DBS:{full:"Dragon Ball Super",tag:"DBS"},GT:{full:"Dragon Ball GT",tag:"GT"},
+  Daima:{full:"Dragon Ball Daima",tag:"DAIMA"},
+};
+
+/*
+  CHARACTER DATA
+  - forms: array of form names (e.g. ["Base","SSJ"]). If absent/empty = no toggle.
+  - costumes[].image: string (simple) OR object keyed by form name
+  - costumes[].colors: array (simple) OR object keyed by form name
+*/
+const characters = [
+  // ═══ DBZ — Début ═══
+  { name:"Goku", subtitle:"Début DBZ", series:"DBZ", arc:"Dragon Ball Z",
+    search:"goku debut z dbz saiyan saga base gi orange standard degats battle damage",
+    costumes:[
+      { label:"Tenue standard", image:"Goku_DBZ_debut_0.png", colors:[
+        {hex:"#fe8807",label:"Gi (orange)"},{hex:"#c35206",label:"Gi (moyen)"},{hex:"#721907",label:"Gi (sombre)"},
+        {hex:"#0a3a70",label:"Sous-vêtement (bleu)"},{hex:"#082a52",label:"Sous-vêtement (moyen)"},
+        {hex:"#eaecec",label:"Logo (blanc)"},{hex:"#998974",label:"Logo (ombre)"},
+        {hex:"#fdc5a6",label:"Peau"},{hex:"#b66955",label:"Peau (ombre)"},
+        {hex:"#091035",label:"Bottes (bleu)"},{hex:"#09090f",label:"Bottes (bleu sombre)"},
+        {hex:"#a60a0c",label:"Bottes (rouge)"},{hex:"#650708",label:"Bottes (rouge ombre)"},
+        {hex:"#ae7809",label:"Bottes (jaune)"},{hex:"#664309",label:"Bottes (jaune ombre)"},
+        {hex:"#292a2d",label:"Cheveux"},
+      ]},
+      { label:"Sans manches (pieds nus)", image:"Goku_DBZ_debut_1.png", colors:[
+        {hex:"#fe8807",label:"Gi (orange)"},{hex:"#c35206",label:"Gi (moyen)"},{hex:"#721907",label:"Gi (sombre)"},
+        {hex:"#0a3a70",label:"Sous-vêtement (bleu)"},{hex:"#082a52",label:"Sous-vêtement (moyen)"},
+        {hex:"#eaecec",label:"Logo (blanc)"},{hex:"#998974",label:"Logo (ombre)"},
+        {hex:"#fdc5a6",label:"Peau"},{hex:"#b66955",label:"Peau (ombre)"},
+        {hex:"#091035",label:"Bottes (bleu)"},{hex:"#09090f",label:"Bottes (bleu sombre)"},
+        {hex:"#a60a0c",label:"Bottes (rouge)"},{hex:"#650708",label:"Bottes (rouge ombre)"},
+        {hex:"#ae7809",label:"Bottes (jaune)"},{hex:"#664309",label:"Bottes (jaune ombre)"},
+        {hex:"#292a2d",label:"Cheveux"},
+      ]},
+      { label:"Tenue standard (variante)", image:"Goku_DBZ_debut_2.png", colors:[
+        {hex:"#fe8807",label:"Gi (orange)"},{hex:"#c35206",label:"Gi (moyen)"},{hex:"#721907",label:"Gi (sombre)"},
+        {hex:"#0a3a70",label:"Sous-vêtement (bleu)"},{hex:"#082a52",label:"Sous-vêtement (moyen)"},
+        {hex:"#eaecec",label:"Logo (blanc)"},{hex:"#998974",label:"Logo (ombre)"},
+        {hex:"#fdc5a6",label:"Peau"},{hex:"#b66955",label:"Peau (ombre)"},
+        {hex:"#091035",label:"Bottes (bleu)"},{hex:"#09090f",label:"Bottes (bleu sombre)"},
+        {hex:"#a60a0c",label:"Bottes (rouge)"},{hex:"#650708",label:"Bottes (rouge ombre)"},
+        {hex:"#ae7809",label:"Bottes (jaune)"},{hex:"#664309",label:"Bottes (jaune ombre)"},
+        {hex:"#292a2d",label:"Cheveux"},
+      ]},
+      { label:"Dégâts sévères", image:"Goku_DBZ_debut_3.png", colors:[
+        {hex:"#fe8807",label:"Gi (orange)"},{hex:"#c35206",label:"Gi (moyen)"},{hex:"#721907",label:"Gi (sombre)"},
+        {hex:"#0a3a70",label:"Sous-vêtement (bleu)"},{hex:"#082a52",label:"Sous-vêtement (moyen)"},
+        {hex:"#fdc5a6",label:"Peau"},{hex:"#b66955",label:"Peau (ombre)"},
+        {hex:"#091035",label:"Bottes (bleu)"},{hex:"#09090f",label:"Bottes (bleu sombre)"},
+        {hex:"#a60a0c",label:"Bottes (rouge)"},{hex:"#650708",label:"Bottes (rouge ombre)"},
+        {hex:"#ae7809",label:"Bottes (jaune)"},{hex:"#664309",label:"Bottes (jaune ombre)"},
+        {hex:"#292a2d",label:"Cheveux"},
+      ]},
+      { label:"Dégâts légers", image:"Goku_DBZ_debut_4.png", colors:[
+        {hex:"#fe8807",label:"Gi (orange)"},{hex:"#c35206",label:"Gi (moyen)"},{hex:"#721907",label:"Gi (sombre)"},
+        {hex:"#0a3a70",label:"Sous-vêtement (bleu)"},{hex:"#082a52",label:"Sous-vêtement (moyen)"},
+        {hex:"#eaecec",label:"Logo (blanc)"},{hex:"#998974",label:"Logo (ombre)"},
+        {hex:"#fdc5a6",label:"Peau"},{hex:"#b66955",label:"Peau (ombre)"},
+        {hex:"#292a2d",label:"Cheveux"},
+      ]},
+    ]},
+
+  // ═══ DBZ — Mid (Namek → Cell) ═══
+  { name:"Goku", subtitle:"Mid DBZ", series:"DBZ", arc:"Dragon Ball Z",
+    search:"goku mid z dbz namek freezer cell gi orange ssj super saiyan armure saiyan yardrat",
+    forms:["Base","SSJ"],
+    costumes:[
+      { label:"Tenue standard",
+        image:{ Base:"Goku_DBZ_mid_Base_-_0.png", SSJ:"Goku_DBZ_mid_SSJ_-_0.png" },
+        colors:{
+          Base:[
+            {hex:"#fe8807",label:"Gi (orange)"},{hex:"#c35206",label:"Gi (moyen)"},{hex:"#721907",label:"Gi (sombre)"},
+            {hex:"#0a3a70",label:"Sous-vêtement (bleu)"},{hex:"#082a52",label:"Sous-vêtement (moyen)"},
+            {hex:"#eaecec",label:"Logo (blanc)"},{hex:"#998974",label:"Logo (ombre)"},
+            {hex:"#fdc5a6",label:"Peau"},{hex:"#b66955",label:"Peau (ombre)"},
+            {hex:"#091035",label:"Bottes (bleu)"},{hex:"#09090f",label:"Bottes (bleu sombre)"},
+            {hex:"#a60a0c",label:"Bottes (rouge)"},{hex:"#650708",label:"Bottes (rouge ombre)"},
+            {hex:"#ae7809",label:"Bottes (jaune)"},{hex:"#664309",label:"Bottes (jaune ombre)"},
+            {hex:"#292a2d",label:"Cheveux"},
+          ],
+          SSJ:[
+            {hex:"#fe8807",label:"Gi (orange)"},{hex:"#c35206",label:"Gi (moyen)"},{hex:"#721907",label:"Gi (sombre)"},
+            {hex:"#0a3a70",label:"Sous-vêtement (bleu)"},{hex:"#082a52",label:"Sous-vêtement (moyen)"},
+            {hex:"#eaecec",label:"Logo (blanc)"},{hex:"#998974",label:"Logo (ombre)"},
+            {hex:"#fdc5a6",label:"Peau"},{hex:"#b66955",label:"Peau (ombre)"},
+            {hex:"#091035",label:"Bottes (bleu)"},{hex:"#09090f",label:"Bottes (bleu sombre)"},
+            {hex:"#a60a0c",label:"Bottes (rouge)"},{hex:"#650708",label:"Bottes (rouge ombre)"},
+            {hex:"#ae7809",label:"Bottes (jaune)"},{hex:"#664309",label:"Bottes (jaune ombre)"},
+            {hex:"#ffff94",label:"Cheveux SSJ"},
+          ],
+        }},
+      { label:"Dégâts légers",
+        image:{ Base:"Goku_DBZ_mid_Base_-_1.png", SSJ:"Goku_DBZ_mid_SSJ_-_1.png" },
+        colors:{
+          Base:[
+            {hex:"#fe8807",label:"Gi (orange)"},{hex:"#c35206",label:"Gi (moyen)"},{hex:"#721907",label:"Gi (sombre)"},
+            {hex:"#0a3a70",label:"Sous-vêtement (bleu)"},{hex:"#082a52",label:"Sous-vêtement (moyen)"},
+            {hex:"#fdc5a6",label:"Peau"},{hex:"#b66955",label:"Peau (ombre)"},
+            {hex:"#091035",label:"Bottes (bleu)"},{hex:"#09090f",label:"Bottes (bleu sombre)"},
+            {hex:"#a60a0c",label:"Bottes (rouge)"},{hex:"#650708",label:"Bottes (rouge ombre)"},
+            {hex:"#ae7809",label:"Bottes (jaune)"},{hex:"#664309",label:"Bottes (jaune ombre)"},
+            {hex:"#292a2d",label:"Cheveux"},
+          ],
+          SSJ:[
+            {hex:"#fe8807",label:"Gi (orange)"},{hex:"#c35206",label:"Gi (moyen)"},{hex:"#721907",label:"Gi (sombre)"},
+            {hex:"#0a3a70",label:"Sous-vêtement (bleu)"},{hex:"#082a52",label:"Sous-vêtement (moyen)"},
+            {hex:"#fdc5a6",label:"Peau"},{hex:"#b66955",label:"Peau (ombre)"},
+            {hex:"#091035",label:"Bottes (bleu)"},{hex:"#09090f",label:"Bottes (bleu sombre)"},
+            {hex:"#a60a0c",label:"Bottes (rouge)"},{hex:"#650708",label:"Bottes (rouge ombre)"},
+            {hex:"#ae7809",label:"Bottes (jaune)"},{hex:"#664309",label:"Bottes (jaune ombre)"},
+            {hex:"#ffff94",label:"Cheveux SSJ"},
+          ],
+        }},
+      { label:"Dégâts sévères",
+        image:{ Base:"Goku_DBZ_mid_Base_-_2.png", SSJ:"Goku_DBZ_mid_SSJ_-_2.png" },
+        colors:{
+          Base:[
+            {hex:"#fe8807",label:"Gi (orange)"},{hex:"#c35206",label:"Gi (moyen)"},{hex:"#721907",label:"Gi (sombre)"},
+            {hex:"#0a3a70",label:"Sous-vêtement (bleu)"},{hex:"#082a52",label:"Sous-vêtement (moyen)"},
+            {hex:"#fdc5a6",label:"Peau"},{hex:"#b66955",label:"Peau (ombre)"},
+            {hex:"#091035",label:"Bottes (bleu)"},{hex:"#09090f",label:"Bottes (bleu sombre)"},
+            {hex:"#a60a0c",label:"Bottes (rouge)"},{hex:"#650708",label:"Bottes (rouge ombre)"},
+            {hex:"#ae7809",label:"Bottes (jaune)"},{hex:"#664309",label:"Bottes (jaune ombre)"},
+            {hex:"#292a2d",label:"Cheveux"},
+          ],
+          SSJ:[
+            {hex:"#fe8807",label:"Gi (orange)"},{hex:"#c35206",label:"Gi (moyen)"},{hex:"#721907",label:"Gi (sombre)"},
+            {hex:"#0a3a70",label:"Sous-vêtement (bleu)"},{hex:"#082a52",label:"Sous-vêtement (moyen)"},
+            {hex:"#fdc5a6",label:"Peau"},{hex:"#b66955",label:"Peau (ombre)"},
+            {hex:"#091035",label:"Bottes (bleu)"},{hex:"#09090f",label:"Bottes (bleu sombre)"},
+            {hex:"#a60a0c",label:"Bottes (rouge)"},{hex:"#650708",label:"Bottes (rouge ombre)"},
+            {hex:"#ae7809",label:"Bottes (jaune)"},{hex:"#664309",label:"Bottes (jaune ombre)"},
+            {hex:"#ffff94",label:"Cheveux SSJ"},
+          ],
+        }},
+      { label:"Armure Saiyan",
+        image:{ Base:"Goku_DBZ_mid_Base_-_3.png", SSJ:"Goku_DBZ_mid_SSJ_-_3.png" },
+        colors:{
+          Base:[
+            {hex:"#073b9e",label:"Sous-vêtement (bleu)"},{hex:"#081765",label:"Sous-vêtement (ombre)"},
+            {hex:"#f7bfa1",label:"Peau"},{hex:"#c77a64",label:"Peau (ombre)"},
+            {hex:"#dbdfe0",label:"Armure (blanc)"},{hex:"#7b8a93",label:"Armure (ombre)"},
+            {hex:"#d6a73f",label:"Armure (jaune)"},{hex:"#956717",label:"Armure (jaune ombre)"},
+            {hex:"#0f0c0c",label:"Cheveux"},
+          ],
+          SSJ:[
+            {hex:"#073b9e",label:"Sous-vêtement (bleu)"},{hex:"#081765",label:"Sous-vêtement (ombre)"},
+            {hex:"#f7bfa1",label:"Peau"},{hex:"#c77a64",label:"Peau (ombre)"},
+            {hex:"#dbdfe0",label:"Armure (blanc)"},{hex:"#7b8a93",label:"Armure (ombre)"},
+            {hex:"#d6a73f",label:"Armure (jaune)"},{hex:"#956717",label:"Armure (jaune ombre)"},
+            {hex:"#ffff94",label:"Cheveux SSJ"},
+          ],
+        }},
+      { label:"Tenue Yardrat",
+        image:{ Base:"Goku_DBZ_mid_Base_-_4.png", SSJ:"Goku_DBZ_mid_SSJ_-_4.png" },
+        colors:{
+          Base:[
+            {hex:"#ece2e6",label:"Blanc"},{hex:"#aea5a8",label:"Blanc (ombre)"},
+            {hex:"#ddc9da",label:"Col roulé"},{hex:"#9e8f9d",label:"Col roulé (ombre)"},
+            {hex:"#b8810c",label:"Armure (jaune)"},{hex:"#7c5309",label:"Armure (jaune ombre)"},
+            {hex:"#0f0d2b",label:"Armure (bleu)"},{hex:"#0a0a0b",label:"Armure (bleu ombre)"},
+            {hex:"#f7bfa1",label:"Peau"},{hex:"#c77a64",label:"Peau (ombre)"},
+            {hex:"#091035",label:"Bottes (bleu)"},{hex:"#09090f",label:"Bottes (bleu sombre)"},
+            {hex:"#a60a0c",label:"Bottes (rouge)"},{hex:"#650708",label:"Bottes (rouge ombre)"},
+            {hex:"#ae7809",label:"Bottes (jaune)"},{hex:"#664309",label:"Bottes (jaune ombre)"},
+            {hex:"#0f0c0c",label:"Cheveux"},
+          ],
+          SSJ:[
+            {hex:"#ece2e6",label:"Blanc"},{hex:"#aea5a8",label:"Blanc (ombre)"},
+            {hex:"#ddc9da",label:"Col roulé"},{hex:"#9e8f9d",label:"Col roulé (ombre)"},
+            {hex:"#b8810c",label:"Armure (jaune)"},{hex:"#7c5309",label:"Armure (jaune ombre)"},
+            {hex:"#0f0d2b",label:"Armure (bleu)"},{hex:"#0a0a0b",label:"Armure (bleu ombre)"},
+            {hex:"#f7bfa1",label:"Peau"},{hex:"#c77a64",label:"Peau (ombre)"},
+            {hex:"#091035",label:"Bottes (bleu)"},{hex:"#09090f",label:"Bottes (bleu sombre)"},
+            {hex:"#a60a0c",label:"Bottes (rouge)"},{hex:"#650708",label:"Bottes (rouge ombre)"},
+            {hex:"#ae7809",label:"Bottes (jaune)"},{hex:"#664309",label:"Bottes (jaune ombre)"},
+            {hex:"#ffff94",label:"Cheveux SSJ"},
+          ],
+        }},
+    ]},
+
+  // ═══ DBZ — Fin (Buu Saga) ═══
+  { name:"Goku", subtitle:"Fin DBZ", series:"DBZ", arc:"Dragon Ball Z",
+    search:"goku fin end z dbz buu saga base ssj ssj2 ssj3 super saiyan gi orange",
+    forms:["Base","SSJ","SSJ2","SSJ3"],
+    costumes:[
+      { label:"Tenue standard",
+        image:{ Base:"Goku_EOZ_Base_0", SSJ:"Goku_EOZ_SSJ_0", SSJ2:"Goku_EOZ_SSJ2_0", SSJ3:"Goku_EOZ_SSJ3_0" },
+        colors:{
+          Base:[
+            {hex:"#fe8807",label:"Gi (orange)"},{hex:"#c35206",label:"Gi (moyen)"},{hex:"#721907",label:"Gi (sombre)"},
+            {hex:"#0a3a70",label:"Sous-vêtement (bleu)"},{hex:"#082a52",label:"Sous-vêtement (moyen)"},
+            {hex:"#fdc5a6",label:"Peau"},{hex:"#b66955",label:"Peau (ombre)"},
+            {hex:"#091035",label:"Bottes (bleu)"},{hex:"#09090f",label:"Bottes (bleu sombre)"},
+            {hex:"#a60a0c",label:"Bottes (rouge)"},{hex:"#650708",label:"Bottes (rouge ombre)"},
+            {hex:"#ae7809",label:"Bottes (jaune)"},{hex:"#664309",label:"Bottes (jaune ombre)"},
+            {hex:"#292a2d",label:"Cheveux"},
+          ],
+          SSJ:[
+            {hex:"#fe8807",label:"Gi (orange)"},{hex:"#c35206",label:"Gi (moyen)"},{hex:"#721907",label:"Gi (sombre)"},
+            {hex:"#0a3a70",label:"Sous-vêtement (bleu)"},{hex:"#082a52",label:"Sous-vêtement (moyen)"},
+            {hex:"#fdc5a6",label:"Peau"},{hex:"#b66955",label:"Peau (ombre)"},
+            {hex:"#091035",label:"Bottes (bleu)"},{hex:"#09090f",label:"Bottes (bleu sombre)"},
+            {hex:"#a60a0c",label:"Bottes (rouge)"},{hex:"#650708",label:"Bottes (rouge ombre)"},
+            {hex:"#ae7809",label:"Bottes (jaune)"},{hex:"#664309",label:"Bottes (jaune ombre)"},
+            {hex:"#ffff94",label:"Cheveux SSJ"},
+          ],
+          SSJ2:[
+            {hex:"#fe8807",label:"Gi (orange)"},{hex:"#c35206",label:"Gi (moyen)"},{hex:"#721907",label:"Gi (sombre)"},
+            {hex:"#0a3a70",label:"Sous-vêtement (bleu)"},{hex:"#082a52",label:"Sous-vêtement (moyen)"},
+            {hex:"#fdc5a6",label:"Peau"},{hex:"#b66955",label:"Peau (ombre)"},
+            {hex:"#091035",label:"Bottes (bleu)"},{hex:"#09090f",label:"Bottes (bleu sombre)"},
+            {hex:"#a60a0c",label:"Bottes (rouge)"},{hex:"#650708",label:"Bottes (rouge ombre)"},
+            {hex:"#ae7809",label:"Bottes (jaune)"},{hex:"#664309",label:"Bottes (jaune ombre)"},
+            {hex:"#ffff94",label:"Cheveux SSJ2"},
+          ],
+          SSJ3:[
+            {hex:"#fe8807",label:"Gi (orange)"},{hex:"#c35206",label:"Gi (moyen)"},{hex:"#721907",label:"Gi (sombre)"},
+            {hex:"#0a3a70",label:"Sous-vêtement (bleu)"},{hex:"#082a52",label:"Sous-vêtement (moyen)"},
+            {hex:"#fdc5a6",label:"Peau"},{hex:"#b66955",label:"Peau (ombre)"},
+            {hex:"#091035",label:"Bottes (bleu)"},{hex:"#09090f",label:"Bottes (bleu sombre)"},
+            {hex:"#a60a0c",label:"Bottes (rouge)"},{hex:"#650708",label:"Bottes (rouge ombre)"},
+            {hex:"#ae7809",label:"Bottes (jaune)"},{hex:"#664309",label:"Bottes (jaune ombre)"},
+            {hex:"#ffff94",label:"Cheveux SSJ3"},
+          ],
+        }},
+      { label:"Dégâts légers",
+        image:{ Base:"Goku_EOZ_Base_1", SSJ:"Goku_EOZ_SSJ_1", SSJ2:"Goku_EOZ_SSJ2_1", SSJ3:"Goku_EOZ_SSJ3_1" },
+        colors:{
+          Base:[
+            {hex:"#fe8807",label:"Gi (orange)"},{hex:"#c35206",label:"Gi (moyen)"},{hex:"#721907",label:"Gi (sombre)"},
+            {hex:"#0a3a70",label:"Sous-vêtement (bleu)"},{hex:"#082a52",label:"Sous-vêtement (moyen)"},
+            {hex:"#fdc5a6",label:"Peau"},{hex:"#b66955",label:"Peau (ombre)"},
+            {hex:"#091035",label:"Bottes (bleu)"},{hex:"#09090f",label:"Bottes (bleu sombre)"},
+            {hex:"#a60a0c",label:"Bottes (rouge)"},{hex:"#650708",label:"Bottes (rouge ombre)"},
+            {hex:"#ae7809",label:"Bottes (jaune)"},{hex:"#664309",label:"Bottes (jaune ombre)"},
+            {hex:"#292a2d",label:"Cheveux"},
+          ],
+          SSJ:[
+            {hex:"#fe8807",label:"Gi (orange)"},{hex:"#c35206",label:"Gi (moyen)"},{hex:"#721907",label:"Gi (sombre)"},
+            {hex:"#0a3a70",label:"Sous-vêtement (bleu)"},{hex:"#082a52",label:"Sous-vêtement (moyen)"},
+            {hex:"#fdc5a6",label:"Peau"},{hex:"#b66955",label:"Peau (ombre)"},
+            {hex:"#091035",label:"Bottes (bleu)"},{hex:"#09090f",label:"Bottes (bleu sombre)"},
+            {hex:"#a60a0c",label:"Bottes (rouge)"},{hex:"#650708",label:"Bottes (rouge ombre)"},
+            {hex:"#ae7809",label:"Bottes (jaune)"},{hex:"#664309",label:"Bottes (jaune ombre)"},
+            {hex:"#ffff94",label:"Cheveux SSJ"},
+          ],
+          SSJ2:[
+            {hex:"#fe8807",label:"Gi (orange)"},{hex:"#c35206",label:"Gi (moyen)"},{hex:"#721907",label:"Gi (sombre)"},
+            {hex:"#0a3a70",label:"Sous-vêtement (bleu)"},{hex:"#082a52",label:"Sous-vêtement (moyen)"},
+            {hex:"#fdc5a6",label:"Peau"},{hex:"#b66955",label:"Peau (ombre)"},
+            {hex:"#091035",label:"Bottes (bleu)"},{hex:"#09090f",label:"Bottes (bleu sombre)"},
+            {hex:"#a60a0c",label:"Bottes (rouge)"},{hex:"#650708",label:"Bottes (rouge ombre)"},
+            {hex:"#ae7809",label:"Bottes (jaune)"},{hex:"#664309",label:"Bottes (jaune ombre)"},
+            {hex:"#ffff94",label:"Cheveux SSJ2"},
+          ],
+          SSJ3:[
+            {hex:"#fe8807",label:"Gi (orange)"},{hex:"#c35206",label:"Gi (moyen)"},{hex:"#721907",label:"Gi (sombre)"},
+            {hex:"#0a3a70",label:"Sous-vêtement (bleu)"},{hex:"#082a52",label:"Sous-vêtement (moyen)"},
+            {hex:"#fdc5a6",label:"Peau"},{hex:"#b66955",label:"Peau (ombre)"},
+            {hex:"#091035",label:"Bottes (bleu)"},{hex:"#09090f",label:"Bottes (bleu sombre)"},
+            {hex:"#a60a0c",label:"Bottes (rouge)"},{hex:"#650708",label:"Bottes (rouge ombre)"},
+            {hex:"#ae7809",label:"Bottes (jaune)"},{hex:"#664309",label:"Bottes (jaune ombre)"},
+            {hex:"#ffff94",label:"Cheveux SSJ3"},
+          ],
+        }},
+      { label:"Armure Saiyan",
+        image:{ Base:"Goku_EOZ_Base_2", SSJ:"Goku_EOZ_SSJ_2", SSJ2:"Goku_EOZ_SSJ2_2", SSJ3:"Goku_EOZ_SSJ3_2" },
+        colors:{
+          Base:[
+            {hex:"#073b9e",label:"Sous-vêtement (bleu)"},{hex:"#081765",label:"Sous-vêtement (ombre)"},
+            {hex:"#f7bfa1",label:"Peau"},{hex:"#c77a64",label:"Peau (ombre)"},
+            {hex:"#dbdfe0",label:"Armure (blanc)"},{hex:"#7b8a93",label:"Armure (ombre)"},
+            {hex:"#d6a73f",label:"Armure (jaune)"},{hex:"#956717",label:"Armure (jaune ombre)"},
+            {hex:"#0f0c0c",label:"Cheveux"},
+          ],
+          SSJ:[
+            {hex:"#073b9e",label:"Sous-vêtement (bleu)"},{hex:"#081765",label:"Sous-vêtement (ombre)"},
+            {hex:"#f7bfa1",label:"Peau"},{hex:"#c77a64",label:"Peau (ombre)"},
+            {hex:"#dbdfe0",label:"Armure (blanc)"},{hex:"#7b8a93",label:"Armure (ombre)"},
+            {hex:"#d6a73f",label:"Armure (jaune)"},{hex:"#956717",label:"Armure (jaune ombre)"},
+            {hex:"#ffff94",label:"Cheveux SSJ"},
+          ],
+          SSJ2:[
+            {hex:"#073b9e",label:"Sous-vêtement (bleu)"},{hex:"#081765",label:"Sous-vêtement (ombre)"},
+            {hex:"#f7bfa1",label:"Peau"},{hex:"#c77a64",label:"Peau (ombre)"},
+            {hex:"#dbdfe0",label:"Armure (blanc)"},{hex:"#7b8a93",label:"Armure (ombre)"},
+            {hex:"#d6a73f",label:"Armure (jaune)"},{hex:"#956717",label:"Armure (jaune ombre)"},
+            {hex:"#ffff94",label:"Cheveux SSJ2"},
+          ],
+          SSJ3:[
+            {hex:"#073b9e",label:"Sous-vêtement (bleu)"},{hex:"#081765",label:"Sous-vêtement (ombre)"},
+            {hex:"#f7bfa1",label:"Peau"},{hex:"#c77a64",label:"Peau (ombre)"},
+            {hex:"#dbdfe0",label:"Armure (blanc)"},{hex:"#7b8a93",label:"Armure (ombre)"},
+            {hex:"#d6a73f",label:"Armure (jaune)"},{hex:"#956717",label:"Armure (jaune ombre)"},
+            {hex:"#ffff94",label:"Cheveux SSJ3"},
+          ],
+        }},
+    ]},
+
+  // ═══ DBS ═══
+  { name:"Goku", subtitle:"DBS", series:"DBS", arc:"Dragon Ball Super",
+    search:"goku dbs dragon ball super base ssj ssg ssb super saiyan god blue tenue whis degats battle damage",
+    forms:["Base","SSJ","SSG","SSB"],
+    costumes:[
+      { label:"Gi avec ceinture",
+        image:{ Base:"Goku_DBS_Base_0", SSJ:"Goku_DBS_SSJ_0", SSG:"Goku_DBS_SSG_0", SSB:"Goku_DBS_SSB_0" },
+        colors:{
+          Base:[
+            {hex:"#fe8807",label:"Gi (orange)"},{hex:"#c35206",label:"Gi (moyen)"},{hex:"#721907",label:"Gi (sombre)"},
+            {hex:"#0a3a70",label:"Sous-vêtement (bleu)"},{hex:"#082a52",label:"Sous-vêtement (moyen)"},
+            {hex:"#eaecec",label:"Logo (blanc)"},{hex:"#998974",label:"Logo (ombre)"},
+            {hex:"#fdc5a6",label:"Peau"},{hex:"#b66955",label:"Peau (ombre)"},
+            {hex:"#091035",label:"Bottes (bleu)"},{hex:"#09090f",label:"Bottes (bleu sombre)"},
+            {hex:"#a60a0c",label:"Bottes (rouge)"},{hex:"#650708",label:"Bottes (rouge ombre)"},
+            {hex:"#ae7809",label:"Bottes (jaune)"},{hex:"#664309",label:"Bottes (jaune ombre)"},
+            {hex:"#292a2d",label:"Cheveux"},
+          ],
+          SSJ:[
+            {hex:"#fe8807",label:"Gi (orange)"},{hex:"#c35206",label:"Gi (moyen)"},{hex:"#721907",label:"Gi (sombre)"},
+            {hex:"#0a3a70",label:"Sous-vêtement (bleu)"},{hex:"#082a52",label:"Sous-vêtement (moyen)"},
+            {hex:"#eaecec",label:"Logo (blanc)"},{hex:"#998974",label:"Logo (ombre)"},
+            {hex:"#fdc5a6",label:"Peau"},{hex:"#b66955",label:"Peau (ombre)"},
+            {hex:"#091035",label:"Bottes (bleu)"},{hex:"#09090f",label:"Bottes (bleu sombre)"},
+            {hex:"#a60a0c",label:"Bottes (rouge)"},{hex:"#650708",label:"Bottes (rouge ombre)"},
+            {hex:"#ae7809",label:"Bottes (jaune)"},{hex:"#664309",label:"Bottes (jaune ombre)"},
+            {hex:"#ffff94",label:"Cheveux SSJ"},
+          ],
+          SSG:[
+            {hex:"#fe8807",label:"Gi (orange)"},{hex:"#c35206",label:"Gi (moyen)"},{hex:"#721907",label:"Gi (sombre)"},
+            {hex:"#0a3a70",label:"Sous-vêtement (bleu)"},{hex:"#082a52",label:"Sous-vêtement (moyen)"},
+            {hex:"#eaecec",label:"Logo (blanc)"},{hex:"#998974",label:"Logo (ombre)"},
+            {hex:"#fdc5a6",label:"Peau"},{hex:"#b66955",label:"Peau (ombre)"},
+            {hex:"#091035",label:"Bottes (bleu)"},{hex:"#09090f",label:"Bottes (bleu sombre)"},
+            {hex:"#a60a0c",label:"Bottes (rouge)"},{hex:"#650708",label:"Bottes (rouge ombre)"},
+            {hex:"#ae7809",label:"Bottes (jaune)"},{hex:"#664309",label:"Bottes (jaune ombre)"},
+            {hex:"#c41030",label:"Cheveux SSG"},
+          ],
+          SSB:[
+            {hex:"#fe8807",label:"Gi (orange)"},{hex:"#c35206",label:"Gi (moyen)"},{hex:"#721907",label:"Gi (sombre)"},
+            {hex:"#0a3a70",label:"Sous-vêtement (bleu)"},{hex:"#082a52",label:"Sous-vêtement (moyen)"},
+            {hex:"#eaecec",label:"Logo (blanc)"},{hex:"#998974",label:"Logo (ombre)"},
+            {hex:"#fdc5a6",label:"Peau"},{hex:"#b66955",label:"Peau (ombre)"},
+            {hex:"#091035",label:"Bottes (bleu)"},{hex:"#09090f",label:"Bottes (bleu sombre)"},
+            {hex:"#a60a0c",label:"Bottes (rouge)"},{hex:"#650708",label:"Bottes (rouge ombre)"},
+            {hex:"#ae7809",label:"Bottes (jaune)"},{hex:"#664309",label:"Bottes (jaune ombre)"},
+            {hex:"#1878c8",label:"Cheveux SSB"},
+          ],
+        }},
+      { label:"Gi avec ceinture (dégâts sévères)",
+        image:{ Base:"Goku_DBS_Base_1", SSJ:"Goku_DBS_SSJ_1", SSG:"Goku_DBS_SSG_1", SSB:"Goku_DBS_SSB_1" },
+        colors:{
+          Base:[
+            {hex:"#fe8807",label:"Gi (orange)"},{hex:"#c35206",label:"Gi (moyen)"},{hex:"#721907",label:"Gi (sombre)"},
+            {hex:"#0a3a70",label:"Sous-vêtement (bleu)"},{hex:"#082a52",label:"Sous-vêtement (moyen)"},
+            {hex:"#fdc5a6",label:"Peau"},{hex:"#b66955",label:"Peau (ombre)"},
+            {hex:"#091035",label:"Bottes (bleu)"},{hex:"#09090f",label:"Bottes (bleu sombre)"},
+            {hex:"#a60a0c",label:"Bottes (rouge)"},{hex:"#650708",label:"Bottes (rouge ombre)"},
+            {hex:"#ae7809",label:"Bottes (jaune)"},{hex:"#664309",label:"Bottes (jaune ombre)"},
+            {hex:"#292a2d",label:"Cheveux"},
+          ],
+          SSJ:[
+            {hex:"#fe8807",label:"Gi (orange)"},{hex:"#c35206",label:"Gi (moyen)"},{hex:"#721907",label:"Gi (sombre)"},
+            {hex:"#0a3a70",label:"Sous-vêtement (bleu)"},{hex:"#082a52",label:"Sous-vêtement (moyen)"},
+            {hex:"#fdc5a6",label:"Peau"},{hex:"#b66955",label:"Peau (ombre)"},
+            {hex:"#091035",label:"Bottes (bleu)"},{hex:"#09090f",label:"Bottes (bleu sombre)"},
+            {hex:"#a60a0c",label:"Bottes (rouge)"},{hex:"#650708",label:"Bottes (rouge ombre)"},
+            {hex:"#ae7809",label:"Bottes (jaune)"},{hex:"#664309",label:"Bottes (jaune ombre)"},
+            {hex:"#ffff94",label:"Cheveux SSJ"},
+          ],
+          SSG:[
+            {hex:"#fe8807",label:"Gi (orange)"},{hex:"#c35206",label:"Gi (moyen)"},{hex:"#721907",label:"Gi (sombre)"},
+            {hex:"#0a3a70",label:"Sous-vêtement (bleu)"},{hex:"#082a52",label:"Sous-vêtement (moyen)"},
+            {hex:"#fdc5a6",label:"Peau"},{hex:"#b66955",label:"Peau (ombre)"},
+            {hex:"#091035",label:"Bottes (bleu)"},{hex:"#09090f",label:"Bottes (bleu sombre)"},
+            {hex:"#a60a0c",label:"Bottes (rouge)"},{hex:"#650708",label:"Bottes (rouge ombre)"},
+            {hex:"#ae7809",label:"Bottes (jaune)"},{hex:"#664309",label:"Bottes (jaune ombre)"},
+            {hex:"#c41030",label:"Cheveux SSG"},
+          ],
+          SSB:[
+            {hex:"#fe8807",label:"Gi (orange)"},{hex:"#c35206",label:"Gi (moyen)"},{hex:"#721907",label:"Gi (sombre)"},
+            {hex:"#0a3a70",label:"Sous-vêtement (bleu)"},{hex:"#082a52",label:"Sous-vêtement (moyen)"},
+            {hex:"#fdc5a6",label:"Peau"},{hex:"#b66955",label:"Peau (ombre)"},
+            {hex:"#091035",label:"Bottes (bleu)"},{hex:"#09090f",label:"Bottes (bleu sombre)"},
+            {hex:"#a60a0c",label:"Bottes (rouge)"},{hex:"#650708",label:"Bottes (rouge ombre)"},
+            {hex:"#ae7809",label:"Bottes (jaune)"},{hex:"#664309",label:"Bottes (jaune ombre)"},
+            {hex:"#1878c8",label:"Cheveux SSB"},
+          ],
+        }},
+      { label:"Gi avec ceinture (dégâts légers)",
+        image:{ Base:"Goku_DBS_Base_2", SSJ:"Goku_DBS_SSJ_2", SSG:"Goku_DBS_SSG_2", SSB:"Goku_DBS_SSB_2" },
+        colors:{
+          Base:[
+            {hex:"#fe8807",label:"Gi (orange)"},{hex:"#c35206",label:"Gi (moyen)"},{hex:"#721907",label:"Gi (sombre)"},
+            {hex:"#0a3a70",label:"Sous-vêtement (bleu)"},{hex:"#082a52",label:"Sous-vêtement (moyen)"},
+            {hex:"#fdc5a6",label:"Peau"},{hex:"#b66955",label:"Peau (ombre)"},
+            {hex:"#091035",label:"Bottes (bleu)"},{hex:"#09090f",label:"Bottes (bleu sombre)"},
+            {hex:"#a60a0c",label:"Bottes (rouge)"},{hex:"#650708",label:"Bottes (rouge ombre)"},
+            {hex:"#ae7809",label:"Bottes (jaune)"},{hex:"#664309",label:"Bottes (jaune ombre)"},
+            {hex:"#292a2d",label:"Cheveux"},
+          ],
+          SSJ:[
+            {hex:"#fe8807",label:"Gi (orange)"},{hex:"#c35206",label:"Gi (moyen)"},{hex:"#721907",label:"Gi (sombre)"},
+            {hex:"#0a3a70",label:"Sous-vêtement (bleu)"},{hex:"#082a52",label:"Sous-vêtement (moyen)"},
+            {hex:"#fdc5a6",label:"Peau"},{hex:"#b66955",label:"Peau (ombre)"},
+            {hex:"#091035",label:"Bottes (bleu)"},{hex:"#09090f",label:"Bottes (bleu sombre)"},
+            {hex:"#a60a0c",label:"Bottes (rouge)"},{hex:"#650708",label:"Bottes (rouge ombre)"},
+            {hex:"#ae7809",label:"Bottes (jaune)"},{hex:"#664309",label:"Bottes (jaune ombre)"},
+            {hex:"#ffff94",label:"Cheveux SSJ"},
+          ],
+          SSG:[
+            {hex:"#fe8807",label:"Gi (orange)"},{hex:"#c35206",label:"Gi (moyen)"},{hex:"#721907",label:"Gi (sombre)"},
+            {hex:"#0a3a70",label:"Sous-vêtement (bleu)"},{hex:"#082a52",label:"Sous-vêtement (moyen)"},
+            {hex:"#fdc5a6",label:"Peau"},{hex:"#b66955",label:"Peau (ombre)"},
+            {hex:"#091035",label:"Bottes (bleu)"},{hex:"#09090f",label:"Bottes (bleu sombre)"},
+            {hex:"#a60a0c",label:"Bottes (rouge)"},{hex:"#650708",label:"Bottes (rouge ombre)"},
+            {hex:"#ae7809",label:"Bottes (jaune)"},{hex:"#664309",label:"Bottes (jaune ombre)"},
+            {hex:"#c41030",label:"Cheveux SSG"},
+          ],
+          SSB:[
+            {hex:"#fe8807",label:"Gi (orange)"},{hex:"#c35206",label:"Gi (moyen)"},{hex:"#721907",label:"Gi (sombre)"},
+            {hex:"#0a3a70",label:"Sous-vêtement (bleu)"},{hex:"#082a52",label:"Sous-vêtement (moyen)"},
+            {hex:"#fdc5a6",label:"Peau"},{hex:"#b66955",label:"Peau (ombre)"},
+            {hex:"#091035",label:"Bottes (bleu)"},{hex:"#09090f",label:"Bottes (bleu sombre)"},
+            {hex:"#a60a0c",label:"Bottes (rouge)"},{hex:"#650708",label:"Bottes (rouge ombre)"},
+            {hex:"#ae7809",label:"Bottes (jaune)"},{hex:"#664309",label:"Bottes (jaune ombre)"},
+            {hex:"#1878c8",label:"Cheveux SSB"},
+          ],
+        }},
+      { label:"Gi de Whis",
+        image:{ Base:"Goku_DBS_Base_3", SSJ:"Goku_DBS_SSJ_3", SSG:"Goku_DBS_SSG_3", SSB:"Goku_DBS_SSB_3" },
+        colors:{
+          Base:[
+            {hex:"#d55206",label:"Gi orange"},{hex:"#801807",label:"Gi orange (ombre)"},{hex:"#590908",label:"Gi orange (ombre 2)"},
+            {hex:"#0a3b71",label:"Bleu poignets"},{hex:"#0b1a4b",label:"Bleu poignets (ombre)"},
+            {hex:"#1162a4",label:"Bleu bottes"},{hex:"#072e5f",label:"Bleu bottes (ombre)"},
+            {hex:"#27343b",label:"Noir bottes"},{hex:"#0d1416",label:"Noir bottes (ombre)"},
+            {hex:"#fdc5a6",label:"Peau"},{hex:"#b66955",label:"Peau (ombre)"},
+            {hex:"#292a2d",label:"Cheveux"},
+          ],
+          SSJ:[
+            {hex:"#d55206",label:"Gi orange"},{hex:"#801807",label:"Gi orange (ombre)"},{hex:"#590908",label:"Gi orange (ombre 2)"},
+            {hex:"#0a3b71",label:"Bleu poignets"},{hex:"#0b1a4b",label:"Bleu poignets (ombre)"},
+            {hex:"#1162a4",label:"Bleu bottes"},{hex:"#072e5f",label:"Bleu bottes (ombre)"},
+            {hex:"#27343b",label:"Noir bottes"},{hex:"#0d1416",label:"Noir bottes (ombre)"},
+            {hex:"#fdc5a6",label:"Peau"},{hex:"#b66955",label:"Peau (ombre)"},
+            {hex:"#ffff94",label:"Cheveux SSJ"},
+          ],
+          SSG:[
+            {hex:"#d55206",label:"Gi orange"},{hex:"#801807",label:"Gi orange (ombre)"},{hex:"#590908",label:"Gi orange (ombre 2)"},
+            {hex:"#0a3b71",label:"Bleu poignets"},{hex:"#0b1a4b",label:"Bleu poignets (ombre)"},
+            {hex:"#1162a4",label:"Bleu bottes"},{hex:"#072e5f",label:"Bleu bottes (ombre)"},
+            {hex:"#27343b",label:"Noir bottes"},{hex:"#0d1416",label:"Noir bottes (ombre)"},
+            {hex:"#fdc5a6",label:"Peau"},{hex:"#b66955",label:"Peau (ombre)"},
+            {hex:"#c41030",label:"Cheveux SSG"},
+          ],
+          SSB:[
+            {hex:"#d55206",label:"Gi orange"},{hex:"#801807",label:"Gi orange (ombre)"},{hex:"#590908",label:"Gi orange (ombre 2)"},
+            {hex:"#0a3b71",label:"Bleu poignets"},{hex:"#0b1a4b",label:"Bleu poignets (ombre)"},
+            {hex:"#1162a4",label:"Bleu bottes"},{hex:"#072e5f",label:"Bleu bottes (ombre)"},
+            {hex:"#27343b",label:"Noir bottes"},{hex:"#0d1416",label:"Noir bottes (ombre)"},
+            {hex:"#fdc5a6",label:"Peau"},{hex:"#b66955",label:"Peau (ombre)"},
+            {hex:"#1878c8",label:"Cheveux SSB"},
+          ],
+        }},
+      { label:"Gi sans ceinture",
+        image:{ Base:"Goku_DBS_Base_4", SSJ:"Goku_DBS_SSJ_4", SSG:"Goku_DBS_SSG_4", SSB:"Goku_DBS_SSB_4" },
+        colors:{
+          Base:[
+            {hex:"#fe8807",label:"Gi (orange)"},{hex:"#c35206",label:"Gi (moyen)"},{hex:"#721907",label:"Gi (sombre)"},
+            {hex:"#0a3a70",label:"Sous-vêtement (bleu)"},{hex:"#082a52",label:"Sous-vêtement (moyen)"},
+            {hex:"#eaecec",label:"Logo (blanc)"},{hex:"#998974",label:"Logo (ombre)"},
+            {hex:"#fdc5a6",label:"Peau"},{hex:"#b66955",label:"Peau (ombre)"},
+            {hex:"#091035",label:"Bottes (bleu)"},{hex:"#09090f",label:"Bottes (bleu sombre)"},
+            {hex:"#a60a0c",label:"Bottes (rouge)"},{hex:"#650708",label:"Bottes (rouge ombre)"},
+            {hex:"#ae7809",label:"Bottes (jaune)"},{hex:"#664309",label:"Bottes (jaune ombre)"},
+            {hex:"#292a2d",label:"Cheveux"},
+          ],
+          SSJ:[
+            {hex:"#fe8807",label:"Gi (orange)"},{hex:"#c35206",label:"Gi (moyen)"},{hex:"#721907",label:"Gi (sombre)"},
+            {hex:"#0a3a70",label:"Sous-vêtement (bleu)"},{hex:"#082a52",label:"Sous-vêtement (moyen)"},
+            {hex:"#eaecec",label:"Logo (blanc)"},{hex:"#998974",label:"Logo (ombre)"},
+            {hex:"#fdc5a6",label:"Peau"},{hex:"#b66955",label:"Peau (ombre)"},
+            {hex:"#091035",label:"Bottes (bleu)"},{hex:"#09090f",label:"Bottes (bleu sombre)"},
+            {hex:"#a60a0c",label:"Bottes (rouge)"},{hex:"#650708",label:"Bottes (rouge ombre)"},
+            {hex:"#ae7809",label:"Bottes (jaune)"},{hex:"#664309",label:"Bottes (jaune ombre)"},
+            {hex:"#ffff94",label:"Cheveux SSJ"},
+          ],
+          SSG:[
+            {hex:"#fe8807",label:"Gi (orange)"},{hex:"#c35206",label:"Gi (moyen)"},{hex:"#721907",label:"Gi (sombre)"},
+            {hex:"#0a3a70",label:"Sous-vêtement (bleu)"},{hex:"#082a52",label:"Sous-vêtement (moyen)"},
+            {hex:"#eaecec",label:"Logo (blanc)"},{hex:"#998974",label:"Logo (ombre)"},
+            {hex:"#fdc5a6",label:"Peau"},{hex:"#b66955",label:"Peau (ombre)"},
+            {hex:"#091035",label:"Bottes (bleu)"},{hex:"#09090f",label:"Bottes (bleu sombre)"},
+            {hex:"#a60a0c",label:"Bottes (rouge)"},{hex:"#650708",label:"Bottes (rouge ombre)"},
+            {hex:"#ae7809",label:"Bottes (jaune)"},{hex:"#664309",label:"Bottes (jaune ombre)"},
+            {hex:"#c41030",label:"Cheveux SSG"},
+          ],
+          SSB:[
+            {hex:"#fe8807",label:"Gi (orange)"},{hex:"#c35206",label:"Gi (moyen)"},{hex:"#721907",label:"Gi (sombre)"},
+            {hex:"#0a3a70",label:"Sous-vêtement (bleu)"},{hex:"#082a52",label:"Sous-vêtement (moyen)"},
+            {hex:"#eaecec",label:"Logo (blanc)"},{hex:"#998974",label:"Logo (ombre)"},
+            {hex:"#fdc5a6",label:"Peau"},{hex:"#b66955",label:"Peau (ombre)"},
+            {hex:"#091035",label:"Bottes (bleu)"},{hex:"#09090f",label:"Bottes (bleu sombre)"},
+            {hex:"#a60a0c",label:"Bottes (rouge)"},{hex:"#650708",label:"Bottes (rouge ombre)"},
+            {hex:"#ae7809",label:"Bottes (jaune)"},{hex:"#664309",label:"Bottes (jaune ombre)"},
+            {hex:"#1878c8",label:"Cheveux SSB"},
+          ],
+        }},
+      { label:"Gi sans ceinture (dégâts sévères)",
+        image:{ Base:"Goku_DBS_Base_5", SSJ:"Goku_DBS_SSJ_5", SSG:"Goku_DBS_SSG_5", SSB:"Goku_DBS_SSB_5" },
+        colors:{
+          Base:[
+            {hex:"#fe8807",label:"Gi (orange)"},{hex:"#c35206",label:"Gi (moyen)"},{hex:"#721907",label:"Gi (sombre)"},
+            {hex:"#0a3a70",label:"Sous-vêtement (bleu)"},{hex:"#082a52",label:"Sous-vêtement (moyen)"},
+            {hex:"#fdc5a6",label:"Peau"},{hex:"#b66955",label:"Peau (ombre)"},
+            {hex:"#091035",label:"Bottes (bleu)"},{hex:"#09090f",label:"Bottes (bleu sombre)"},
+            {hex:"#a60a0c",label:"Bottes (rouge)"},{hex:"#650708",label:"Bottes (rouge ombre)"},
+            {hex:"#ae7809",label:"Bottes (jaune)"},{hex:"#664309",label:"Bottes (jaune ombre)"},
+            {hex:"#292a2d",label:"Cheveux"},
+          ],
+          SSJ:[
+            {hex:"#fe8807",label:"Gi (orange)"},{hex:"#c35206",label:"Gi (moyen)"},{hex:"#721907",label:"Gi (sombre)"},
+            {hex:"#0a3a70",label:"Sous-vêtement (bleu)"},{hex:"#082a52",label:"Sous-vêtement (moyen)"},
+            {hex:"#fdc5a6",label:"Peau"},{hex:"#b66955",label:"Peau (ombre)"},
+            {hex:"#091035",label:"Bottes (bleu)"},{hex:"#09090f",label:"Bottes (bleu sombre)"},
+            {hex:"#a60a0c",label:"Bottes (rouge)"},{hex:"#650708",label:"Bottes (rouge ombre)"},
+            {hex:"#ae7809",label:"Bottes (jaune)"},{hex:"#664309",label:"Bottes (jaune ombre)"},
+            {hex:"#ffff94",label:"Cheveux SSJ"},
+          ],
+          SSG:[
+            {hex:"#fe8807",label:"Gi (orange)"},{hex:"#c35206",label:"Gi (moyen)"},{hex:"#721907",label:"Gi (sombre)"},
+            {hex:"#0a3a70",label:"Sous-vêtement (bleu)"},{hex:"#082a52",label:"Sous-vêtement (moyen)"},
+            {hex:"#fdc5a6",label:"Peau"},{hex:"#b66955",label:"Peau (ombre)"},
+            {hex:"#091035",label:"Bottes (bleu)"},{hex:"#09090f",label:"Bottes (bleu sombre)"},
+            {hex:"#a60a0c",label:"Bottes (rouge)"},{hex:"#650708",label:"Bottes (rouge ombre)"},
+            {hex:"#ae7809",label:"Bottes (jaune)"},{hex:"#664309",label:"Bottes (jaune ombre)"},
+            {hex:"#c41030",label:"Cheveux SSG"},
+          ],
+          SSB:[
+            {hex:"#fe8807",label:"Gi (orange)"},{hex:"#c35206",label:"Gi (moyen)"},{hex:"#721907",label:"Gi (sombre)"},
+            {hex:"#0a3a70",label:"Sous-vêtement (bleu)"},{hex:"#082a52",label:"Sous-vêtement (moyen)"},
+            {hex:"#fdc5a6",label:"Peau"},{hex:"#b66955",label:"Peau (ombre)"},
+            {hex:"#091035",label:"Bottes (bleu)"},{hex:"#09090f",label:"Bottes (bleu sombre)"},
+            {hex:"#a60a0c",label:"Bottes (rouge)"},{hex:"#650708",label:"Bottes (rouge ombre)"},
+            {hex:"#ae7809",label:"Bottes (jaune)"},{hex:"#664309",label:"Bottes (jaune ombre)"},
+            {hex:"#1878c8",label:"Cheveux SSB"},
+          ],
+        }},
+      { label:"Gi sans ceinture (dégâts légers)",
+        image:{ Base:"Goku_DBS_Base_6", SSJ:"Goku_DBS_SSJ_6", SSG:"Goku_DBS_SSG_6", SSB:"Goku_DBS_SSB_6" },
+        colors:{
+          Base:[
+            {hex:"#fe8807",label:"Gi (orange)"},{hex:"#c35206",label:"Gi (moyen)"},{hex:"#721907",label:"Gi (sombre)"},
+            {hex:"#0a3a70",label:"Sous-vêtement (bleu)"},{hex:"#082a52",label:"Sous-vêtement (moyen)"},
+            {hex:"#fdc5a6",label:"Peau"},{hex:"#b66955",label:"Peau (ombre)"},
+            {hex:"#091035",label:"Bottes (bleu)"},{hex:"#09090f",label:"Bottes (bleu sombre)"},
+            {hex:"#a60a0c",label:"Bottes (rouge)"},{hex:"#650708",label:"Bottes (rouge ombre)"},
+            {hex:"#ae7809",label:"Bottes (jaune)"},{hex:"#664309",label:"Bottes (jaune ombre)"},
+            {hex:"#292a2d",label:"Cheveux"},
+          ],
+          SSJ:[
+            {hex:"#fe8807",label:"Gi (orange)"},{hex:"#c35206",label:"Gi (moyen)"},{hex:"#721907",label:"Gi (sombre)"},
+            {hex:"#0a3a70",label:"Sous-vêtement (bleu)"},{hex:"#082a52",label:"Sous-vêtement (moyen)"},
+            {hex:"#fdc5a6",label:"Peau"},{hex:"#b66955",label:"Peau (ombre)"},
+            {hex:"#091035",label:"Bottes (bleu)"},{hex:"#09090f",label:"Bottes (bleu sombre)"},
+            {hex:"#a60a0c",label:"Bottes (rouge)"},{hex:"#650708",label:"Bottes (rouge ombre)"},
+            {hex:"#ae7809",label:"Bottes (jaune)"},{hex:"#664309",label:"Bottes (jaune ombre)"},
+            {hex:"#ffff94",label:"Cheveux SSJ"},
+          ],
+          SSG:[
+            {hex:"#fe8807",label:"Gi (orange)"},{hex:"#c35206",label:"Gi (moyen)"},{hex:"#721907",label:"Gi (sombre)"},
+            {hex:"#0a3a70",label:"Sous-vêtement (bleu)"},{hex:"#082a52",label:"Sous-vêtement (moyen)"},
+            {hex:"#fdc5a6",label:"Peau"},{hex:"#b66955",label:"Peau (ombre)"},
+            {hex:"#091035",label:"Bottes (bleu)"},{hex:"#09090f",label:"Bottes (bleu sombre)"},
+            {hex:"#a60a0c",label:"Bottes (rouge)"},{hex:"#650708",label:"Bottes (rouge ombre)"},
+            {hex:"#ae7809",label:"Bottes (jaune)"},{hex:"#664309",label:"Bottes (jaune ombre)"},
+            {hex:"#c41030",label:"Cheveux SSG"},
+          ],
+          SSB:[
+            {hex:"#fe8807",label:"Gi (orange)"},{hex:"#c35206",label:"Gi (moyen)"},{hex:"#721907",label:"Gi (sombre)"},
+            {hex:"#0a3a70",label:"Sous-vêtement (bleu)"},{hex:"#082a52",label:"Sous-vêtement (moyen)"},
+            {hex:"#fdc5a6",label:"Peau"},{hex:"#b66955",label:"Peau (ombre)"},
+            {hex:"#091035",label:"Bottes (bleu)"},{hex:"#09090f",label:"Bottes (bleu sombre)"},
+            {hex:"#a60a0c",label:"Bottes (rouge)"},{hex:"#650708",label:"Bottes (rouge ombre)"},
+            {hex:"#ae7809",label:"Bottes (jaune)"},{hex:"#664309",label:"Bottes (jaune ombre)"},
+            {hex:"#1878c8",label:"Cheveux SSB"},
+          ],
+        }},
+    ]},
+
+  // ═══ DBS — Ultra Instinct ═══
+  { name:"Goku", subtitle:"Ultra Instinct", series:"DBS", arc:"Dragon Ball Super",
+    search:"goku ultra instinct ui mui maitrise mastered autonomous dbs argent silver blanc white",
+    forms:["UI","MUI"],
+    costumes:[
+      { label:"Gi avec ceinture",
+        image:{ UI:"Goku_DBS_UI_0", MUI:"Goku_DBS_MUI_0" },
+        colors:{
+          UI:[
+            {hex:"#fe8807",label:"Gi (orange)"},{hex:"#c35206",label:"Gi (moyen)"},{hex:"#721907",label:"Gi (sombre)"},
+            {hex:"#0a3a70",label:"Sous-vêtement (bleu)"},{hex:"#082a52",label:"Sous-vêtement (moyen)"},
+            {hex:"#eaecec",label:"Logo (blanc)"},{hex:"#998974",label:"Logo (ombre)"},
+            {hex:"#fdc5a6",label:"Peau"},{hex:"#b66955",label:"Peau (ombre)"},
+            {hex:"#091035",label:"Bottes (bleu)"},{hex:"#09090f",label:"Bottes (bleu sombre)"},
+            {hex:"#a60a0c",label:"Bottes (rouge)"},{hex:"#650708",label:"Bottes (rouge ombre)"},
+            {hex:"#ae7809",label:"Bottes (jaune)"},{hex:"#664309",label:"Bottes (jaune ombre)"},
+            {hex:"#292a2d",label:"Cheveux"},
+          ],
+          MUI:[
+            {hex:"#fe8807",label:"Gi (orange)"},{hex:"#c35206",label:"Gi (moyen)"},{hex:"#721907",label:"Gi (sombre)"},
+            {hex:"#0a3a70",label:"Sous-vêtement (bleu)"},{hex:"#082a52",label:"Sous-vêtement (moyen)"},
+            {hex:"#eaecec",label:"Logo (blanc)"},{hex:"#998974",label:"Logo (ombre)"},
+            {hex:"#fdc5a6",label:"Peau"},{hex:"#b66955",label:"Peau (ombre)"},
+            {hex:"#091035",label:"Bottes (bleu)"},{hex:"#09090f",label:"Bottes (bleu sombre)"},
+            {hex:"#a60a0c",label:"Bottes (rouge)"},{hex:"#650708",label:"Bottes (rouge ombre)"},
+            {hex:"#ae7809",label:"Bottes (jaune)"},{hex:"#664309",label:"Bottes (jaune ombre)"},
+            {hex:"#b1b3c7",label:"Cheveux MUI (clair)"},{hex:"#5c5f7d",label:"Cheveux MUI"},
+          ],
+        }},
+      { label:"Gi avec ceinture (dégâts sévères)",
+        image:{ UI:"Goku_DBS_UI_1", MUI:"Goku_DBS_MUI_1" },
+        colors:{
+          UI:[
+            {hex:"#fe8807",label:"Gi (orange)"},{hex:"#c35206",label:"Gi (moyen)"},{hex:"#721907",label:"Gi (sombre)"},
+            {hex:"#0a3a70",label:"Sous-vêtement (bleu)"},{hex:"#082a52",label:"Sous-vêtement (moyen)"},
+            {hex:"#fdc5a6",label:"Peau"},{hex:"#b66955",label:"Peau (ombre)"},
+            {hex:"#091035",label:"Bottes (bleu)"},{hex:"#09090f",label:"Bottes (bleu sombre)"},
+            {hex:"#a60a0c",label:"Bottes (rouge)"},{hex:"#650708",label:"Bottes (rouge ombre)"},
+            {hex:"#ae7809",label:"Bottes (jaune)"},{hex:"#664309",label:"Bottes (jaune ombre)"},
+            {hex:"#292a2d",label:"Cheveux"},
+          ],
+          MUI:[
+            {hex:"#fe8807",label:"Gi (orange)"},{hex:"#c35206",label:"Gi (moyen)"},{hex:"#721907",label:"Gi (sombre)"},
+            {hex:"#0a3a70",label:"Sous-vêtement (bleu)"},{hex:"#082a52",label:"Sous-vêtement (moyen)"},
+            {hex:"#fdc5a6",label:"Peau"},{hex:"#b66955",label:"Peau (ombre)"},
+            {hex:"#091035",label:"Bottes (bleu)"},{hex:"#09090f",label:"Bottes (bleu sombre)"},
+            {hex:"#a60a0c",label:"Bottes (rouge)"},{hex:"#650708",label:"Bottes (rouge ombre)"},
+            {hex:"#ae7809",label:"Bottes (jaune)"},{hex:"#664309",label:"Bottes (jaune ombre)"},
+            {hex:"#b1b3c7",label:"Cheveux MUI (clair)"},{hex:"#5c5f7d",label:"Cheveux MUI"},
+          ],
+        }},
+      { label:"Gi avec ceinture (dégâts légers)",
+        image:{ UI:"Goku_DBS_UI_2", MUI:"Goku_DBS_MUI_2" },
+        colors:{
+          UI:[
+            {hex:"#fe8807",label:"Gi (orange)"},{hex:"#c35206",label:"Gi (moyen)"},{hex:"#721907",label:"Gi (sombre)"},
+            {hex:"#0a3a70",label:"Sous-vêtement (bleu)"},{hex:"#082a52",label:"Sous-vêtement (moyen)"},
+            {hex:"#fdc5a6",label:"Peau"},{hex:"#b66955",label:"Peau (ombre)"},
+            {hex:"#091035",label:"Bottes (bleu)"},{hex:"#09090f",label:"Bottes (bleu sombre)"},
+            {hex:"#a60a0c",label:"Bottes (rouge)"},{hex:"#650708",label:"Bottes (rouge ombre)"},
+            {hex:"#ae7809",label:"Bottes (jaune)"},{hex:"#664309",label:"Bottes (jaune ombre)"},
+            {hex:"#292a2d",label:"Cheveux"},
+          ],
+          MUI:[
+            {hex:"#fe8807",label:"Gi (orange)"},{hex:"#c35206",label:"Gi (moyen)"},{hex:"#721907",label:"Gi (sombre)"},
+            {hex:"#0a3a70",label:"Sous-vêtement (bleu)"},{hex:"#082a52",label:"Sous-vêtement (moyen)"},
+            {hex:"#fdc5a6",label:"Peau"},{hex:"#b66955",label:"Peau (ombre)"},
+            {hex:"#091035",label:"Bottes (bleu)"},{hex:"#09090f",label:"Bottes (bleu sombre)"},
+            {hex:"#a60a0c",label:"Bottes (rouge)"},{hex:"#650708",label:"Bottes (rouge ombre)"},
+            {hex:"#ae7809",label:"Bottes (jaune)"},{hex:"#664309",label:"Bottes (jaune ombre)"},
+            {hex:"#b1b3c7",label:"Cheveux MUI (clair)"},{hex:"#5c5f7d",label:"Cheveux MUI"},
+          ],
+        }},
+      { label:"Gi sans ceinture",
+        image:{ UI:"Goku_DBS_UI_3", MUI:"Goku_DBS_MUI_3" },
+        colors:{
+          UI:[
+            {hex:"#fe8807",label:"Gi (orange)"},{hex:"#c35206",label:"Gi (moyen)"},{hex:"#721907",label:"Gi (sombre)"},
+            {hex:"#0a3a70",label:"Sous-vêtement (bleu)"},{hex:"#082a52",label:"Sous-vêtement (moyen)"},
+            {hex:"#eaecec",label:"Logo (blanc)"},{hex:"#998974",label:"Logo (ombre)"},
+            {hex:"#fdc5a6",label:"Peau"},{hex:"#b66955",label:"Peau (ombre)"},
+            {hex:"#091035",label:"Bottes (bleu)"},{hex:"#09090f",label:"Bottes (bleu sombre)"},
+            {hex:"#a60a0c",label:"Bottes (rouge)"},{hex:"#650708",label:"Bottes (rouge ombre)"},
+            {hex:"#ae7809",label:"Bottes (jaune)"},{hex:"#664309",label:"Bottes (jaune ombre)"},
+            {hex:"#292a2d",label:"Cheveux"},
+          ],
+          MUI:[
+            {hex:"#fe8807",label:"Gi (orange)"},{hex:"#c35206",label:"Gi (moyen)"},{hex:"#721907",label:"Gi (sombre)"},
+            {hex:"#0a3a70",label:"Sous-vêtement (bleu)"},{hex:"#082a52",label:"Sous-vêtement (moyen)"},
+            {hex:"#eaecec",label:"Logo (blanc)"},{hex:"#998974",label:"Logo (ombre)"},
+            {hex:"#fdc5a6",label:"Peau"},{hex:"#b66955",label:"Peau (ombre)"},
+            {hex:"#091035",label:"Bottes (bleu)"},{hex:"#09090f",label:"Bottes (bleu sombre)"},
+            {hex:"#a60a0c",label:"Bottes (rouge)"},{hex:"#650708",label:"Bottes (rouge ombre)"},
+            {hex:"#ae7809",label:"Bottes (jaune)"},{hex:"#664309",label:"Bottes (jaune ombre)"},
+            {hex:"#b1b3c7",label:"Cheveux MUI (clair)"},{hex:"#5c5f7d",label:"Cheveux MUI"},
+          ],
+        }},
+      { label:"Gi sans ceinture (dégâts légers)",
+        image:{ UI:"Goku_DBS_UI_4", MUI:"Goku_DBS_MUI_4" },
+        colors:{
+          UI:[
+            {hex:"#fe8807",label:"Gi (orange)"},{hex:"#c35206",label:"Gi (moyen)"},{hex:"#721907",label:"Gi (sombre)"},
+            {hex:"#0a3a70",label:"Sous-vêtement (bleu)"},{hex:"#082a52",label:"Sous-vêtement (moyen)"},
+            {hex:"#fdc5a6",label:"Peau"},{hex:"#b66955",label:"Peau (ombre)"},
+            {hex:"#091035",label:"Bottes (bleu)"},{hex:"#09090f",label:"Bottes (bleu sombre)"},
+            {hex:"#a60a0c",label:"Bottes (rouge)"},{hex:"#650708",label:"Bottes (rouge ombre)"},
+            {hex:"#ae7809",label:"Bottes (jaune)"},{hex:"#664309",label:"Bottes (jaune ombre)"},
+            {hex:"#292a2d",label:"Cheveux"},
+          ],
+          MUI:[
+            {hex:"#fe8807",label:"Gi (orange)"},{hex:"#c35206",label:"Gi (moyen)"},{hex:"#721907",label:"Gi (sombre)"},
+            {hex:"#0a3a70",label:"Sous-vêtement (bleu)"},{hex:"#082a52",label:"Sous-vêtement (moyen)"},
+            {hex:"#fdc5a6",label:"Peau"},{hex:"#b66955",label:"Peau (ombre)"},
+            {hex:"#091035",label:"Bottes (bleu)"},{hex:"#09090f",label:"Bottes (bleu sombre)"},
+            {hex:"#a60a0c",label:"Bottes (rouge)"},{hex:"#650708",label:"Bottes (rouge ombre)"},
+            {hex:"#ae7809",label:"Bottes (jaune)"},{hex:"#664309",label:"Bottes (jaune ombre)"},
+            {hex:"#b1b3c7",label:"Cheveux MUI (clair)"},{hex:"#5c5f7d",label:"Cheveux MUI"},
+          ],
+        }},
+      { label:"Gi sans ceinture (dégâts sévères)",
+        image:{ UI:"Goku_DBS_UI_5", MUI:"Goku_DBS_MUI_5" },
+        colors:{
+          UI:[
+            {hex:"#fe8807",label:"Gi (orange)"},{hex:"#c35206",label:"Gi (moyen)"},{hex:"#721907",label:"Gi (sombre)"},
+            {hex:"#0a3a70",label:"Sous-vêtement (bleu)"},{hex:"#082a52",label:"Sous-vêtement (moyen)"},
+            {hex:"#fdc5a6",label:"Peau"},{hex:"#b66955",label:"Peau (ombre)"},
+            {hex:"#091035",label:"Bottes (bleu)"},{hex:"#09090f",label:"Bottes (bleu sombre)"},
+            {hex:"#a60a0c",label:"Bottes (rouge)"},{hex:"#650708",label:"Bottes (rouge ombre)"},
+            {hex:"#ae7809",label:"Bottes (jaune)"},{hex:"#664309",label:"Bottes (jaune ombre)"},
+            {hex:"#292a2d",label:"Cheveux"},
+          ],
+          MUI:[
+            {hex:"#fe8807",label:"Gi (orange)"},{hex:"#c35206",label:"Gi (moyen)"},{hex:"#721907",label:"Gi (sombre)"},
+            {hex:"#0a3a70",label:"Sous-vêtement (bleu)"},{hex:"#082a52",label:"Sous-vêtement (moyen)"},
+            {hex:"#fdc5a6",label:"Peau"},{hex:"#b66955",label:"Peau (ombre)"},
+            {hex:"#091035",label:"Bottes (bleu)"},{hex:"#09090f",label:"Bottes (bleu sombre)"},
+            {hex:"#a60a0c",label:"Bottes (rouge)"},{hex:"#650708",label:"Bottes (rouge ombre)"},
+            {hex:"#ae7809",label:"Bottes (jaune)"},{hex:"#664309",label:"Bottes (jaune ombre)"},
+            {hex:"#b1b3c7",label:"Cheveux MUI (clair)"},{hex:"#5c5f7d",label:"Cheveux MUI"},
+          ],
+        }},
+    ]},
+
+
+  // ═══ DBZ — Vegeta ═══
+  { name:"Vegeta", subtitle:"Détecteur", series:"DBZ", arc:"Dragon Ball Z",
+    search:"vegeta detecteur scouter dbz saiyan saga armure armor oozaru singe geant",
+    forms:["Base","Oozaru"],
+    costumes:[
+      { label:"Armure complète",
+        image:{ Base:"VGT_Det_0", Oozaru:"VGT_Det_Oozaru_0" },
+        colors:{
+          Base:[
+            {hex:"#121240",label:"Combinaison (bleu sombre)"},{hex:"#242470",label:"Combinaison (bleu)"},
+            {hex:"#c8a030",label:"Armure (or)"},{hex:"#8c6018",label:"Armure (or sombre)"},
+            {hex:"#e8e0d0",label:"Armure (blanc)"},{hex:"#c8c0b0",label:"Armure (gris clair)"},
+            {hex:"#e0d8c8",label:"Gants / Bottes"},{hex:"#f4c4a0",label:"Peau"},{hex:"#181818",label:"Cheveux"},
+          ],
+          Oozaru:[
+            {hex:"#6c4824",label:"Fourrure (brun)"},{hex:"#483018",label:"Fourrure (sombre)"},
+            {hex:"#c8a030",label:"Armure (or)"},{hex:"#8c6018",label:"Armure (or sombre)"},
+            {hex:"#e8e0d0",label:"Armure (blanc)"},{hex:"#c8c0b0",label:"Armure (gris)"},
+            {hex:"#d83030",label:"Yeux (rouge)"},{hex:"#f4c4a0",label:"Museau"},
+          ],
+        }},
+      { label:"Armure (dégâts sévères)",
+        image:{ Base:"VGT_Det_1", Oozaru:"VGT_Det_Oozaru_1" },
+        colors:{
+          Base:[
+            {hex:"#121240",label:"Combinaison (bleu sombre)"},{hex:"#242470",label:"Combinaison (bleu)"},
+            {hex:"#c8a030",label:"Armure (or)"},{hex:"#8c6018",label:"Armure (or sombre)"},
+            {hex:"#e8e0d0",label:"Armure (blanc)"},{hex:"#e0d8c8",label:"Gants / Bottes"},
+            {hex:"#f4c4a0",label:"Peau"},{hex:"#b87050",label:"Peau (ombre)"},{hex:"#181818",label:"Cheveux"},
+          ],
+          Oozaru:[
+            {hex:"#6c4824",label:"Fourrure (brun)"},{hex:"#483018",label:"Fourrure (sombre)"},
+            {hex:"#c8a030",label:"Armure (or)"},{hex:"#e8e0d0",label:"Armure (blanc)"},
+            {hex:"#d83030",label:"Yeux (rouge)"},{hex:"#f4c4a0",label:"Museau"},
+          ],
+        }},
+      { label:"Armure variante",
+        image:{ Base:"VGT_Det_2", Oozaru:"VGT_Det_Oozaru_2" },
+        colors:{
+          Base:[
+            {hex:"#121240",label:"Combinaison (bleu sombre)"},{hex:"#242470",label:"Combinaison (bleu)"},
+            {hex:"#c8a030",label:"Armure reste (or)"},{hex:"#e8e0d0",label:"Armure reste (blanc)"},
+            {hex:"#e0d8c8",label:"Gants / Bottes"},{hex:"#f4c4a0",label:"Peau (clair)"},
+            {hex:"#d8a478",label:"Peau"},{hex:"#b87050",label:"Peau (ombre)"},{hex:"#181818",label:"Cheveux"},
+          ],
+          Oozaru:[
+            {hex:"#6c4824",label:"Fourrure (brun)"},{hex:"#483018",label:"Fourrure (sombre)"},
+            {hex:"#c8a030",label:"Armure reste (or)"},{hex:"#e8e0d0",label:"Armure reste (blanc)"},
+            {hex:"#d83030",label:"Yeux (rouge)"},{hex:"#f4c4a0",label:"Museau"},
+          ],
+        }},
+      { label:"Sans armure",
+        image:{ Base:"VGT_Det_3", Oozaru:"VGT_Det_Oozaru_3" },
+        colors:{
+          Base:[
+            {hex:"#121240",label:"Combinaison (bleu sombre)"},{hex:"#242470",label:"Combinaison (bleu)"},
+            {hex:"#e0d8c8",label:"Gants / Bottes"},{hex:"#f4c4a0",label:"Peau (clair)"},
+            {hex:"#d8a478",label:"Peau"},{hex:"#b87050",label:"Peau (ombre)"},{hex:"#181818",label:"Cheveux"},
+          ],
+          Oozaru:[
+            {hex:"#6c4824",label:"Fourrure (brun)"},{hex:"#483018",label:"Fourrure (sombre)"},
+            {hex:"#301c0c",label:"Fourrure (très sombre)"},{hex:"#d83030",label:"Yeux (rouge)"},
+            {hex:"#f4c4a0",label:"Museau"},{hex:"#c09078",label:"Museau (ombre)"},
+          ],
+        }},
+    ]},
+
+
+  // ═══ DBZ — Vegeta Début ═══
+  { name:"Vegeta", subtitle:"Début DBZ", series:"DBZ", arc:"Dragon Ball Z",
+    search:"vegeta debut dbz namek freeza freezer ginyu armure saiyan base ssj super saiyan",
+    forms:["Base","SSJ"],
+    costumes:[
+      { label:"Armure complète",
+        image:{ Base:"VGT_Base_DebutZ_0", SSJ:"VGT_SSJ_DebutZ_0" },
+        colors:{
+          Base:[
+            {hex:"#181854",label:"Combinaison (bleu sombre)"},{hex:"#282878",label:"Combinaison (bleu)"},
+            {hex:"#e8e0d0",label:"Armure (blanc)"},{hex:"#c8c0b0",label:"Armure (gris)"},
+            {hex:"#c8a030",label:"Armure (or)"},{hex:"#8c6018",label:"Armure (or sombre)"},
+            {hex:"#e0d8c8",label:"Gants / Bottes"},{hex:"#f4c4a0",label:"Peau"},{hex:"#181818",label:"Cheveux"},
+          ],
+          SSJ:[
+            {hex:"#181854",label:"Combinaison (bleu sombre)"},{hex:"#282878",label:"Combinaison (bleu)"},
+            {hex:"#e8e0d0",label:"Armure (blanc)"},{hex:"#c8c0b0",label:"Armure (gris)"},
+            {hex:"#c8a030",label:"Armure (or)"},{hex:"#8c6018",label:"Armure (or sombre)"},
+            {hex:"#e8c33c",label:"Cheveux SSJ"},{hex:"#b89420",label:"Cheveux SSJ (ombre)"},
+            {hex:"#f4c4a0",label:"Peau"},
+          ],
+        }},
+      { label:"Armure (dégâts légers)",
+        image:{ Base:"VGT_Base_DebutZ_1", SSJ:"VGT_SSJ_DebutZ_1" },
+        colors:{
+          Base:[
+            {hex:"#181854",label:"Combinaison (bleu sombre)"},{hex:"#282878",label:"Combinaison (bleu)"},
+            {hex:"#e8e0d0",label:"Armure (blanc)"},{hex:"#c8a030",label:"Armure (or)"},
+            {hex:"#e0d8c8",label:"Gants / Bottes"},{hex:"#f4c4a0",label:"Peau"},
+            {hex:"#b87050",label:"Peau (ombre)"},{hex:"#181818",label:"Cheveux"},
+          ],
+          SSJ:[
+            {hex:"#181854",label:"Combinaison (bleu sombre)"},{hex:"#282878",label:"Combinaison (bleu)"},
+            {hex:"#e8e0d0",label:"Armure (blanc)"},{hex:"#c8a030",label:"Armure (or)"},
+            {hex:"#e0d8c8",label:"Gants / Bottes"},{hex:"#e8c33c",label:"Cheveux SSJ"},
+            {hex:"#f4c4a0",label:"Peau"},{hex:"#b87050",label:"Peau (ombre)"},
+          ],
+        }},
+      { label:"Armure (dégâts sévères)",
+        image:{ Base:"VGT_Base_DebutZ_2", SSJ:"VGT_SSJ_DebutZ_2" },
+        colors:{
+          Base:[
+            {hex:"#181854",label:"Combinaison (bleu sombre)"},{hex:"#282878",label:"Combinaison (bleu)"},
+            {hex:"#e8e0d0",label:"Armure reste (blanc)"},{hex:"#e0d8c8",label:"Gants / Bottes"},
+            {hex:"#f4c4a0",label:"Peau (clair)"},{hex:"#d8a478",label:"Peau"},
+            {hex:"#b87050",label:"Peau (ombre)"},{hex:"#181818",label:"Cheveux"},
+          ],
+          SSJ:[
+            {hex:"#181854",label:"Combinaison (bleu sombre)"},{hex:"#282878",label:"Combinaison (bleu)"},
+            {hex:"#e8e0d0",label:"Armure reste (blanc)"},{hex:"#e0d8c8",label:"Gants / Bottes"},
+            {hex:"#e8c33c",label:"Cheveux SSJ"},{hex:"#f4c4a0",label:"Peau"},
+            {hex:"#d8a478",label:"Peau (moyen)"},{hex:"#b87050",label:"Peau (ombre)"},
+          ],
+        }},
+      { label:"Sans armure",
+        image:{ Base:"VGT_Base_DebutZ_3", SSJ:"VGT_SSJ_DebutZ_3" },
+        colors:{
+          Base:[
+            {hex:"#181854",label:"Combinaison (bleu sombre)"},{hex:"#282878",label:"Combinaison (bleu)"},
+            {hex:"#e0d8c8",label:"Gants / Bottes"},{hex:"#f4c4a0",label:"Peau (clair)"},
+            {hex:"#d8a478",label:"Peau"},{hex:"#b87050",label:"Peau (ombre)"},{hex:"#181818",label:"Cheveux"},
+          ],
+          SSJ:[
+            {hex:"#181854",label:"Combinaison (bleu sombre)"},{hex:"#282878",label:"Combinaison (bleu)"},
+            {hex:"#e0d8c8",label:"Gants / Bottes"},{hex:"#e8c33c",label:"Cheveux SSJ"},
+            {hex:"#b89420",label:"Cheveux SSJ (ombre)"},{hex:"#f4c4a0",label:"Peau"},{hex:"#b87050",label:"Peau (ombre)"},
+          ],
+        }},
+    ]},
+
+  // ═══ DBZ — Super Vegeta ═══
+  { name:"Vegeta", subtitle:"Super Vegeta", series:"DBZ", arc:"Dragon Ball Z",
+    search:"vegeta super vegeta ssj ascended cell saga dbz",
+    costumes:[
+      { label:"Armure complète", image:"Super_Vegeta_0", colors:[
+        {hex:"#181854",label:"Combinaison (bleu sombre)"},{hex:"#2828a0",label:"Combinaison (bleu)"},
+        {hex:"#e8e0d0",label:"Armure (blanc)"},{hex:"#c8c0b0",label:"Armure (gris)"},
+        {hex:"#e0d8c8",label:"Gants / Bottes"},{hex:"#e8c33c",label:"Cheveux SSJ"},
+        {hex:"#b89420",label:"Cheveux SSJ (ombre)"},{hex:"#f4c4a0",label:"Peau"},
+      ]},
+      { label:"Armure (dégâts légers)", image:"Super_Vegeta_1", colors:[
+        {hex:"#000c60",label:"Combinaison (bleu sombre)"},{hex:"#003c9c",label:"Combinaison (bleu)"},
+        {hex:"#d8d8d8",label:"Armure (blanc)"},{hex:"#6c7884",label:"Gants / Bottes"},
+        {hex:"#e8c33c",label:"Cheveux SSJ"},{hex:"#f4c4a0",label:"Peau"},{hex:"#b87050",label:"Peau (ombre)"},
+      ]},
+      { label:"Armure (dégâts sévères)", image:"Super_Vegeta_2", colors:[
+        {hex:"#000c60",label:"Combinaison (bleu sombre)"},{hex:"#003c9c",label:"Combinaison (bleu)"},
+        {hex:"#d8d8d8",label:"Armure reste (blanc)"},{hex:"#6c7884",label:"Gants / Bottes"},
+        {hex:"#e8c33c",label:"Cheveux SSJ"},{hex:"#f4c4a0",label:"Peau (clair)"},
+        {hex:"#d8a478",label:"Peau"},{hex:"#b87050",label:"Peau (ombre)"},
+      ]},
+      { label:"Sans armure", image:"Super_Vegeta_3", colors:[
+        {hex:"#000c60",label:"Combinaison (bleu sombre)"},{hex:"#003c9c",label:"Combinaison (bleu)"},
+        {hex:"#6c7884",label:"Gants / Bottes"},{hex:"#e8c33c",label:"Cheveux SSJ"},
+        {hex:"#b89420",label:"Cheveux SSJ (ombre)"},{hex:"#f4c4a0",label:"Peau"},{hex:"#b87050",label:"Peau (ombre)"},
+      ]},
+    ]},
+
+
+  // ═══ DBZ — Vegeta Fin ═══
+  { name:"Vegeta", subtitle:"Fin DBZ", series:"DBZ", arc:"Dragon Ball Z",
+    search:"vegeta fin end z dbz buu saga base ssj ssj2 majin vegeta armure combinaison",
+    forms:["Base","SSJ","SSJ2"],
+    costumes:[
+      { label:"Tenue standard",
+        image:{ Base:"VGT_EOZ_Base_0", SSJ:"VGT_EOZ_SSJ_0", SSJ2:"VGT_EOZ_SSJ2_0", Majin:"Majin_Vegeta_0" },
+        colors:{
+          Base:[
+            {hex:"#1c1c5c",label:"Combinaison (bleu sombre)"},{hex:"#2c2c88",label:"Combinaison (bleu)"},
+            {hex:"#e8e0d0",label:"Armure (blanc)"},{hex:"#c8c0b0",label:"Armure (gris)"},
+            {hex:"#e0d8c8",label:"Gants / Bottes"},{hex:"#c8a030",label:"Détails (or)"},
+            {hex:"#f4c4a0",label:"Peau"},{hex:"#b87050",label:"Peau (ombre)"},{hex:"#181818",label:"Cheveux"},
+          ],
+          SSJ:[
+            {hex:"#1c1c5c",label:"Combinaison (bleu sombre)"},{hex:"#2c2c88",label:"Combinaison (bleu)"},
+            {hex:"#e8e0d0",label:"Armure (blanc)"},{hex:"#c8c0b0",label:"Armure (gris)"},
+            {hex:"#e0d8c8",label:"Gants / Bottes"},{hex:"#e8c33c",label:"Cheveux SSJ"},
+            {hex:"#b89420",label:"Cheveux SSJ (ombre)"},{hex:"#f4c4a0",label:"Peau"},
+          ],
+          SSJ2:[
+            {hex:"#1c1c5c",label:"Combinaison (bleu sombre)"},{hex:"#2c2c88",label:"Combinaison (bleu)"},
+            {hex:"#e8e0d0",label:"Armure (blanc)"},{hex:"#c8c0b0",label:"Armure (gris)"},
+            {hex:"#e0d8c8",label:"Gants / Bottes"},{hex:"#f0d040",label:"Cheveux SSJ2 (clair)"},
+            {hex:"#c8a428",label:"Cheveux SSJ2"},{hex:"#f4c4a0",label:"Peau"},
+          ],
+          Majin:[
+            {hex:"#1c1c5c",label:"Combinaison (bleu sombre)"},{hex:"#2c2c88",label:"Combinaison (bleu)"},
+            {hex:"#e8e0d0",label:"Armure (blanc)"},{hex:"#c8c0b0",label:"Armure (gris)"},
+            {hex:"#e0d8c8",label:"Gants / Bottes"},{hex:"#f0d040",label:"Cheveux SSJ2 (clair)"},
+            {hex:"#c8a428",label:"Cheveux SSJ2"},{hex:"#a030a0",label:"M (front)"},
+            {hex:"#f4c4a0",label:"Peau"},{hex:"#b87050",label:"Peau (ombre)"},
+          ],
+        }},
+      { label:"Dégâts légers",
+        image:{ Base:"VGT_EOZ_Base_1", SSJ:"VGT_EOZ_SSJ_1", SSJ2:"VGT_EOZ_SSJ2_1", Majin:"Majin_Vegeta_1" },
+        colors:{
+          Base:[
+            {hex:"#1c1c5c",label:"Combinaison (bleu sombre)"},{hex:"#2c2c88",label:"Combinaison (bleu)"},
+            {hex:"#e8e0d0",label:"Armure (blanc)"},{hex:"#e0d8c8",label:"Gants / Bottes"},
+            {hex:"#f4c4a0",label:"Peau"},{hex:"#b87050",label:"Peau (ombre)"},{hex:"#181818",label:"Cheveux"},
+          ],
+          SSJ:[
+            {hex:"#1c1c5c",label:"Combinaison (bleu sombre)"},{hex:"#2c2c88",label:"Combinaison (bleu)"},
+            {hex:"#e8e0d0",label:"Armure (blanc)"},{hex:"#e0d8c8",label:"Gants / Bottes"},
+            {hex:"#e8c33c",label:"Cheveux SSJ"},{hex:"#f4c4a0",label:"Peau"},{hex:"#b87050",label:"Peau (ombre)"},
+          ],
+          SSJ2:[
+            {hex:"#1c1c5c",label:"Combinaison (bleu sombre)"},{hex:"#2c2c88",label:"Combinaison (bleu)"},
+            {hex:"#e8e0d0",label:"Armure (blanc)"},{hex:"#e0d8c8",label:"Gants / Bottes"},
+            {hex:"#f0d040",label:"Cheveux SSJ2"},{hex:"#f4c4a0",label:"Peau"},{hex:"#b87050",label:"Peau (ombre)"},
+          ],
+          Majin:[
+            {hex:"#1c1c5c",label:"Combinaison (bleu sombre)"},{hex:"#2c2c88",label:"Combinaison (bleu)"},
+            {hex:"#e8e0d0",label:"Armure (blanc)"},{hex:"#e0d8c8",label:"Gants / Bottes"},
+            {hex:"#f0d040",label:"Cheveux SSJ2"},{hex:"#a030a0",label:"M (front)"},
+            {hex:"#f4c4a0",label:"Peau (clair)"},{hex:"#d8a478",label:"Peau"},{hex:"#b87050",label:"Peau (ombre)"},
+          ],
+        }},
+      { label:"Dégâts sévères",
+        image:{ Base:"VGT_EOZ_Base_2", SSJ:"VGT_EOZ_SSJ_2", SSJ2:"VGT_EOZ_SSJ2_2", Majin:"" },
+        colors:{
+          Base:[
+            {hex:"#1c1c5c",label:"Combinaison (bleu sombre)"},{hex:"#2c2c88",label:"Combinaison (bleu)"},
+            {hex:"#e0d8c8",label:"Gants / Bottes"},{hex:"#f4c4a0",label:"Peau (clair)"},
+            {hex:"#d8a478",label:"Peau"},{hex:"#b87050",label:"Peau (ombre)"},{hex:"#181818",label:"Cheveux"},
+          ],
+          SSJ:[
+            {hex:"#1c1c5c",label:"Combinaison (bleu sombre)"},{hex:"#2c2c88",label:"Combinaison (bleu)"},
+            {hex:"#e0d8c8",label:"Gants / Bottes"},{hex:"#e8c33c",label:"Cheveux SSJ"},
+            {hex:"#f4c4a0",label:"Peau"},{hex:"#d8a478",label:"Peau (moyen)"},{hex:"#b87050",label:"Peau (ombre)"},
+          ],
+          SSJ2:[
+            {hex:"#1c1c5c",label:"Combinaison (bleu sombre)"},{hex:"#2c2c88",label:"Combinaison (bleu)"},
+            {hex:"#e0d8c8",label:"Gants / Bottes"},{hex:"#f0d040",label:"Cheveux SSJ2"},
+            {hex:"#f4c4a0",label:"Peau"},{hex:"#d8a478",label:"Peau (moyen)"},{hex:"#b87050",label:"Peau (ombre)"},
+          ],
+          Majin:[
+            {hex:"#1c1c5c",label:"Combinaison (bleu sombre)"},{hex:"#2c2c88",label:"Combinaison (bleu)"},
+            {hex:"#e0d8c8",label:"Gants / Bottes"},{hex:"#f0d040",label:"Cheveux SSJ2"},
+            {hex:"#a030a0",label:"M (front)"},{hex:"#f4c4a0",label:"Peau"},{hex:"#b87050",label:"Peau (ombre)"},
+          ],
+        }},
+    ]},
+
+
+  // ═══ DBZ — Majin Vegeta ═══
+  { name:"Vegeta", subtitle:"Majin", series:"DBZ", arc:"Dragon Ball Z",
+    search:"vegeta majin majin vegeta ssj2 buu saga dbz m front possede possessed",
+    costumes:[
+      { label:"Tenue standard", image:"Majin_Vegeta_0", colors:[
+        {hex:"#1c1c5c",label:"Combinaison (bleu sombre)"},{hex:"#2c2c88",label:"Combinaison (bleu)"},
+        {hex:"#e8e0d0",label:"Armure (blanc)"},{hex:"#c8c0b0",label:"Armure (gris)"},
+        {hex:"#e0d8c8",label:"Gants / Bottes"},{hex:"#f0d040",label:"Cheveux SSJ2 (clair)"},
+        {hex:"#c8a428",label:"Cheveux SSJ2"},{hex:"#8b1a8b",label:"M (front)"},
+        {hex:"#f4c4a0",label:"Peau"},{hex:"#b87050",label:"Peau (ombre)"},
+      ]},
+      { label:"Dégâts légers", image:"Majin_Vegeta_1", colors:[
+        {hex:"#000c60",label:"Combinaison (bleu sombre)"},{hex:"#003090",label:"Combinaison (bleu)"},
+        {hex:"#d8d8d8",label:"Armure (blanc)"},{hex:"#6c7884",label:"Gants / Bottes"},
+        {hex:"#f0d040",label:"Cheveux SSJ2"},{hex:"#a030a0",label:"M (front)"},
+        {hex:"#f4c4a0",label:"Peau (clair)"},{hex:"#d8a478",label:"Peau"},{hex:"#b87050",label:"Peau (ombre)"},
+      ]},
+    ]},
+
+
+  // ═══ DBS — Vegeta ═══
+  { name:"Vegeta", subtitle:"DBS", series:"DBS", arc:"Dragon Ball Super",
+    search:"vegeta dbs dragon ball super base ssj ssg ssb blue god whis armure gi",
+    forms:["Base","SSJ","SSG","SSB"],
+    costumes:[
+      { label:"Armure Whis",
+        image:{ Base:"VGT_DBS_Base_0", SSJ:"VGT_DBS_SSJ_0", SSG:"VGT_DBS_SSG_0", SSB:"VGT_DBS_SSB_0" },
+        colors:{
+          Base:[
+            {hex:"#082640",label:"Combinaison (bleu sombre)"},{hex:"#131e29",label:"Combinaison (ombre)"},
+            {hex:"#d6dadb",label:"Armure (blanc)"},{hex:"#575b5b",label:"Armure (gris)"},
+            {hex:"#cd9f2d",label:"Détails (or)"},{hex:"#643d0d",label:"Détails (or sombre)"},
+            {hex:"#f5bb91",label:"Peau"},{hex:"#aa6c44",label:"Peau (ombre)"},{hex:"#181b20",label:"Cheveux"},
+          ],
+          SSJ:[
+            {hex:"#082640",label:"Combinaison (bleu sombre)"},{hex:"#121e29",label:"Combinaison (ombre)"},
+            {hex:"#d5d9da",label:"Armure (blanc)"},{hex:"#545859",label:"Armure (gris)"},
+            {hex:"#cd9f34",label:"Détails (or)"},{hex:"#6a400c",label:"Détails (or sombre)"},
+            {hex:"#f7c889",label:"Cheveux SSJ"},{hex:"#996616",label:"Cheveux SSJ (ombre)"},
+            {hex:"#f5bb91",label:"Peau"},{hex:"#ad7246",label:"Peau (ombre)"},
+          ],
+          SSG:[
+            {hex:"#092a40",label:"Combinaison (bleu sombre)"},{hex:"#131922",label:"Combinaison (ombre)"},
+            {hex:"#d5d9db",label:"Armure (blanc)"},{hex:"#4b5053",label:"Armure (gris)"},
+            {hex:"#cca034",label:"Détails (or)"},{hex:"#7f5615",label:"Détails (or sombre)"},
+            {hex:"#ab1c42",label:"Cheveux SSG"},{hex:"#690d1d",label:"Cheveux SSG (sombre)"},
+            {hex:"#f7b992",label:"Peau"},{hex:"#b16b4c",label:"Peau (ombre)"},
+          ],
+          SSB:[
+            {hex:"#082641",label:"Combinaison (bleu sombre)"},{hex:"#151e28",label:"Combinaison (ombre)"},
+            {hex:"#d5d8da",label:"Armure (blanc)"},{hex:"#545858",label:"Armure (gris)"},
+            {hex:"#cc9f2d",label:"Détails (or)"},{hex:"#633d0e",label:"Détails (or sombre)"},
+            {hex:"#2f96bc",label:"Cheveux SSB"},{hex:"#0e4e6d",label:"Cheveux SSB (sombre)"},
+            {hex:"#f4bb92",label:"Peau"},{hex:"#aa6d43",label:"Peau (ombre)"},
+          ],
+        }},
+      { label:"Dégâts légers",
+        image:{ Base:"VGT_DBS_Base_1", SSJ:"VGT_DBS_SSJ_1", SSG:"VGT_DBS_SSG_1", SSB:"VGT_DBS_SSB_1" },
+        colors:{
+          Base:[
+            {hex:"#092640",label:"Combinaison (bleu sombre)"},{hex:"#1b1a1e",label:"Combinaison (ombre)"},
+            {hex:"#d6d9da",label:"Armure reste (blanc)"},{hex:"#595b5b",label:"Armure reste (gris)"},
+            {hex:"#f7bb93",label:"Peau"},{hex:"#ae6448",label:"Peau (ombre)"},{hex:"#613912",label:"Cheveux"},
+          ],
+          SSJ:[
+            {hex:"#092640",label:"Combinaison (bleu sombre)"},{hex:"#1b1b1e",label:"Combinaison (ombre)"},
+            {hex:"#d6d9da",label:"Armure reste (blanc)"},{hex:"#5a5d5d",label:"Armure reste (gris)"},
+            {hex:"#976417",label:"Cheveux SSJ"},{hex:"#63380b",label:"Cheveux SSJ (sombre)"},
+            {hex:"#f6bb92",label:"Peau"},{hex:"#ae6648",label:"Peau (ombre)"},
+          ],
+          SSG:[
+            {hex:"#0a2a3f",label:"Combinaison (bleu sombre)"},{hex:"#111922",label:"Combinaison (ombre)"},
+            {hex:"#d4d7d9",label:"Armure reste (blanc)"},{hex:"#534f4d",label:"Armure reste (gris)"},
+            {hex:"#b11d45",label:"Cheveux SSG"},{hex:"#7d0d25",label:"Cheveux SSG (sombre)"},
+            {hex:"#f6ba93",label:"Peau"},{hex:"#af6349",label:"Peau (ombre)"},
+          ],
+          SSB:[
+            {hex:"#092740",label:"Combinaison (bleu sombre)"},{hex:"#171b21",label:"Combinaison (ombre)"},
+            {hex:"#d6d9da",label:"Armure reste (blanc)"},{hex:"#5a5d5d",label:"Armure reste (gris)"},
+            {hex:"#3499bd",label:"Cheveux SSB"},{hex:"#0e4e6d",label:"Cheveux SSB (sombre)"},
+            {hex:"#f7bb94",label:"Peau"},{hex:"#ae6549",label:"Peau (ombre)"},
+          ],
+        }},
+      { label:"Dégâts sévères",
+        image:{ Base:"VGT_DBS_Base_2", SSJ:"VGT_DBS_SSJ_2", SSG:"VGT_DBS_SSG_2", SSB:"VGT_DBS_SSB_2" },
+        colors:{
+          Base:[
+            {hex:"#09253f",label:"Combinaison (bleu sombre)"},{hex:"#1f1d1e",label:"Combinaison (ombre)"},
+            {hex:"#d2d6d7",label:"Armure reste (blanc)"},{hex:"#555959",label:"Armure reste (gris)"},
+            {hex:"#f9bc93",label:"Peau (clair)"},{hex:"#b0664a",label:"Peau (ombre)"},{hex:"#5d3411",label:"Cheveux"},
+          ],
+          SSJ:[
+            {hex:"#092640",label:"Combinaison (bleu sombre)"},{hex:"#151d27",label:"Combinaison (ombre)"},
+            {hex:"#d2d5d6",label:"Armure reste (blanc)"},{hex:"#57595a",label:"Armure reste (gris)"},
+            {hex:"#95621a",label:"Cheveux SSJ"},{hex:"#693e10",label:"Cheveux SSJ (sombre)"},
+            {hex:"#f9bd92",label:"Peau"},{hex:"#af674a",label:"Peau (ombre)"},
+          ],
+          SSG:[
+            {hex:"#092a40",label:"Combinaison (bleu sombre)"},{hex:"#101a26",label:"Combinaison (ombre)"},
+            {hex:"#d2d5d7",label:"Armure reste (blanc)"},{hex:"#504e4d",label:"Armure reste (gris)"},
+            {hex:"#b11d45",label:"Cheveux SSG"},{hex:"#7b0d24",label:"Cheveux SSG (sombre)"},
+            {hex:"#f9bd94",label:"Peau"},{hex:"#af6549",label:"Peau (ombre)"},
+          ],
+          SSB:[
+            {hex:"#092640",label:"Combinaison (bleu sombre)"},{hex:"#1b1d22",label:"Combinaison (ombre)"},
+            {hex:"#d2d5d6",label:"Armure reste (blanc)"},{hex:"#565959",label:"Armure reste (gris)"},
+            {hex:"#3198bd",label:"Cheveux SSB"},{hex:"#0e4f6d",label:"Cheveux SSB (sombre)"},
+            {hex:"#f9be95",label:"Peau"},{hex:"#ae6549",label:"Peau (ombre)"},
+          ],
+        }},
+      { label:"Armure variante",
+        image:{ Base:"VGT_DBS_Base_3", SSJ:"VGT_DBS_SSJ_3", SSG:"VGT_DBS_SSG_3", SSB:"VGT_DBS_SSB_3" },
+        colors:{
+          Base:[
+            {hex:"#535458",label:"Combinaison (gris)"},{hex:"#2b2d30",label:"Combinaison (gris sombre)"},
+            {hex:"#404245",label:"Combinaison (moyen)"},{hex:"#d5d9da",label:"Armure (blanc)"},
+            {hex:"#77838a",label:"Armure (gris)"},{hex:"#d5a52e",label:"Plastron (or)"},
+            {hex:"#623b0f",label:"Plastron (or sombre)"},{hex:"#f6bc91",label:"Peau"},
+            {hex:"#a76a42",label:"Peau (ombre)"},{hex:"#1d1b1b",label:"Cheveux"},
+          ],
+          SSJ:[
+            {hex:"#525357",label:"Combinaison (gris)"},{hex:"#2d3032",label:"Combinaison (gris sombre)"},
+            {hex:"#d5d9da",label:"Armure (blanc)"},{hex:"#77838a",label:"Armure (gris)"},
+            {hex:"#d2a22e",label:"Plastron (or)"},{hex:"#643b0b",label:"Plastron (or sombre)"},
+            {hex:"#976417",label:"Cheveux SSJ"},{hex:"#643b0b",label:"Cheveux SSJ (sombre)"},
+            {hex:"#f9cb90",label:"Peau"},{hex:"#ad7646",label:"Peau (ombre)"},
+          ],
+          SSG:[
+            {hex:"#525357",label:"Combinaison (gris)"},{hex:"#292c2e",label:"Combinaison (gris sombre)"},
+            {hex:"#d5d9db",label:"Armure (blanc)"},{hex:"#77838b",label:"Armure (gris)"},
+            {hex:"#d4a62f",label:"Plastron (or)"},{hex:"#643d10",label:"Plastron (or sombre)"},
+            {hex:"#b21e46",label:"Cheveux SSG"},{hex:"#7f0d26",label:"Cheveux SSG (sombre)"},
+            {hex:"#f6ba8f",label:"Peau"},{hex:"#af6b4a",label:"Peau (ombre)"},
+          ],
+          SSB:[
+            {hex:"#525357",label:"Combinaison (gris)"},{hex:"#2c2f32",label:"Combinaison (gris sombre)"},
+            {hex:"#d5d9da",label:"Armure (blanc)"},{hex:"#76838a",label:"Armure (gris)"},
+            {hex:"#d4a52f",label:"Plastron (or)"},{hex:"#623b0e",label:"Plastron (or sombre)"},
+            {hex:"#0d4a69",label:"Cheveux SSB (sombre)"},{hex:"#13202b",label:"Cheveux SSB (très sombre)"},
+            {hex:"#f4bc91",label:"Peau"},{hex:"#aa6f48",label:"Peau (ombre)"},
+          ],
+        }},
+    ]},
+
+
+  // ═══ DBZ — Gohan Enfant ═══
+  { name:"Gohan", subtitle:"Enfant", series:"DBZ", arc:"Dragon Ball Z",
+    search:"gohan enfant kid child dbz saiyan saga namek piccolo",
+    costumes:[
+      { label:"Tenue Piccolo", image:"Gohan_Enfant_0", colors:[
+        {hex:"#5c2d91",label:"Gi (violet)"},{hex:"#3d1f72",label:"Gi (violet sombre)"},
+        {hex:"#cc3333",label:"Ceinture (rouge)"},{hex:"#c49456",label:"Chaussures (beige)"},
+        {hex:"#f4c4a0",label:"Peau"},{hex:"#d8a478",label:"Peau (ombre)"},{hex:"#181818",label:"Cheveux"},
+      ]},
+      { label:"Tenue Piccolo (dégâts)", image:"Gohan_Enfant_1", colors:[
+        {hex:"#6030a0",label:"Gi (violet)"},{hex:"#481890",label:"Gi (violet sombre)"},
+        {hex:"#c0302c",label:"Ceinture (rouge)"},{hex:"#f4c4a0",label:"Peau"},
+        {hex:"#d8a478",label:"Peau (ombre)"},{hex:"#b87050",label:"Peau (blessure)"},{hex:"#181818",label:"Cheveux"},
+      ]},
+      { label:"Armure Saiyan", image:"Gohan_Enfant_2", colors:[
+        {hex:"#000c60",label:"Combinaison (bleu sombre)"},{hex:"#003090",label:"Combinaison (bleu)"},
+        {hex:"#d8d8d8",label:"Armure (blanc)"},{hex:"#a8b0b4",label:"Armure (gris)"},
+        {hex:"#cc9c24",label:"Détails (or)"},{hex:"#f4c4a0",label:"Peau"},
+        {hex:"#d8a478",label:"Peau (ombre)"},{hex:"#181818",label:"Cheveux"},
+      ]},
+    ]},
+
+  // ═══ DBZ — Gohan Ado ═══
+  { name:"Gohan", subtitle:"Adolescent", series:"DBZ", arc:"Dragon Ball Z",
+    search:"gohan ado adolescent teen cell saga dbz base ssj ssj2 super saiyan",
+    forms:["Base","SSJ","SSJ2"],
+    costumes:[
+      { label:"Tenue Piccolo",
+        image:{ Base:"Gohan_Ado_Base_0", SSJ:"Gohan_Ado_SSJ_0", SSJ2:"Gohan_Ado_SSJ2_0" },
+        colors:{
+          Base:[
+            {hex:"#5c2d91",label:"Gi (violet)"},{hex:"#3d1f72",label:"Gi (violet sombre)"},
+            {hex:"#cc3333",label:"Ceinture (rouge)"},{hex:"#c49456",label:"Chaussures (beige)"},
+            {hex:"#f4c4a0",label:"Peau"},{hex:"#d8a478",label:"Peau (ombre)"},{hex:"#181818",label:"Cheveux"},
+          ],
+          SSJ:[
+            {hex:"#5c2d91",label:"Gi (violet)"},{hex:"#3d1f72",label:"Gi (violet sombre)"},
+            {hex:"#cc3333",label:"Ceinture (rouge)"},{hex:"#c49456",label:"Chaussures (beige)"},
+            {hex:"#e8c33c",label:"Cheveux SSJ"},{hex:"#b89420",label:"Cheveux SSJ (ombre)"},
+            {hex:"#f4c4a0",label:"Peau"},
+          ],
+          SSJ2:[
+            {hex:"#5c2d91",label:"Gi (violet)"},{hex:"#3d1f72",label:"Gi (violet sombre)"},
+            {hex:"#cc3333",label:"Ceinture (rouge)"},{hex:"#c49456",label:"Chaussures (beige)"},
+            {hex:"#f0d040",label:"Cheveux SSJ2 (clair)"},{hex:"#c8a428",label:"Cheveux SSJ2"},
+            {hex:"#f4c4a0",label:"Peau"},
+          ],
+        }},
+      { label:"Tenue Piccolo (dégâts légers)",
+        image:{ Base:"Gohan_Ado_Base_1", SSJ:"Gohan_Ado_SSJ_1", SSJ2:"Gohan_Ado_SSJ2_1" },
+        colors:{
+          Base:[
+            {hex:"#5c2d91",label:"Gi (violet)"},{hex:"#3d1f72",label:"Gi (violet sombre)"},
+            {hex:"#cc3333",label:"Ceinture (rouge)"},{hex:"#f4c4a0",label:"Peau"},
+            {hex:"#d8a478",label:"Peau (ombre)"},{hex:"#181818",label:"Cheveux"},
+          ],
+          SSJ:[
+            {hex:"#5c2d91",label:"Gi (violet)"},{hex:"#3d1f72",label:"Gi (violet sombre)"},
+            {hex:"#cc3333",label:"Ceinture (rouge)"},{hex:"#e8c33c",label:"Cheveux SSJ"},
+            {hex:"#f4c4a0",label:"Peau"},{hex:"#d8a478",label:"Peau (ombre)"},
+          ],
+          SSJ2:[
+            {hex:"#5c2d91",label:"Gi (violet)"},{hex:"#3d1f72",label:"Gi (violet sombre)"},
+            {hex:"#cc3333",label:"Ceinture (rouge)"},{hex:"#f0d040",label:"Cheveux SSJ2"},
+            {hex:"#f4c4a0",label:"Peau"},{hex:"#d8a478",label:"Peau (ombre)"},
+          ],
+        }},
+      { label:"Tenue Piccolo avec Cape",
+        image:{ Base:"Gohan_Ado_Base_2", SSJ:"Gohan_Ado_SSJ_2", SSJ2:"Gohan_Ado_SSJ2_2" },
+        colors:{
+          Base:[
+            {hex:"#5c2d91",label:"Gi reste (violet)"},{hex:"#3d1f72",label:"Gi (violet sombre)"},
+            {hex:"#f4c4a0",label:"Peau (clair)"},{hex:"#d8a478",label:"Peau"},
+            {hex:"#b87050",label:"Peau (ombre)"},{hex:"#181818",label:"Cheveux"},
+          ],
+          SSJ:[
+            {hex:"#5c2d91",label:"Gi reste (violet)"},{hex:"#3d1f72",label:"Gi (violet sombre)"},
+            {hex:"#e8c33c",label:"Cheveux SSJ"},{hex:"#f4c4a0",label:"Peau"},
+            {hex:"#d8a478",label:"Peau (moyen)"},{hex:"#b87050",label:"Peau (ombre)"},
+          ],
+          SSJ2:[
+            {hex:"#5c2d91",label:"Gi reste (violet)"},{hex:"#3d1f72",label:"Gi (violet sombre)"},
+            {hex:"#f0d040",label:"Cheveux SSJ2"},{hex:"#f4c4a0",label:"Peau"},
+            {hex:"#d8a478",label:"Peau (moyen)"},{hex:"#b87050",label:"Peau (ombre)"},
+          ],
+        }},
+      { label:"Tenue Saiyen",
+        image:{ Base:"Gohan_Ado_Base_3", SSJ:"Gohan_Ado_SSJ_3", SSJ2:"Gohan_Ado_SSJ2_3" },
+        colors:{
+          Base:[
+            {hex:"#5c2d91",label:"Gi reste (violet)"},{hex:"#3d1f72",label:"Gi (violet sombre)"},
+            {hex:"#f4c4a0",label:"Peau (clair)"},{hex:"#d8a478",label:"Peau"},
+            {hex:"#b87050",label:"Peau (ombre)"},{hex:"#181818",label:"Cheveux"},
+          ],
+          SSJ:[
+            {hex:"#5c2d91",label:"Gi reste (violet)"},{hex:"#3d1f72",label:"Gi (violet sombre)"},
+            {hex:"#e8c33c",label:"Cheveux SSJ"},{hex:"#f4c4a0",label:"Peau"},
+            {hex:"#d8a478",label:"Peau (moyen)"},{hex:"#b87050",label:"Peau (ombre)"},
+          ],
+          SSJ2:[
+            {hex:"#5c2d91",label:"Gi reste (violet)"},{hex:"#3d1f72",label:"Gi (violet sombre)"},
+            {hex:"#f0d040",label:"Cheveux SSJ2"},{hex:"#f4c4a0",label:"Peau"},
+            {hex:"#d8a478",label:"Peau (moyen)"},{hex:"#b87050",label:"Peau (ombre)"},
+          ],
+        }},
+    ]},
+
+  // ═══ GT ═══
+  { name:"Goku", subtitle:"GT", series:"GT", arc:"Dragon Ball GT",
+    search:"goku gt dragon ball gt enfant kid base ssj ssj3 ssj4 super saiyan 4 fourrure rouge",
+    forms:["Base","SSJ","SSJ3","SSJ4"],
+    costumes:[
+      { label:"Tenue unique",
+        image:{ Base:"Goku_GT_Base", SSJ:"Goku_GT_SSJ", SSJ3:"Goku_GT_SSJ3", SSJ4:"Goku_GT_SSJ4" },
+        colors:{
+          Base:[
+            {hex:"#4164c2",label:"Gi bleu"},{hex:"#18256a",label:"Gi bleu (ombre)"},
+            {hex:"#d26580",label:"Poignet"},{hex:"#933e53",label:"Poignet (ombre)"},
+            {hex:"#c9c3d7",label:"Ceinture"},{hex:"#886874",label:"Ceinture (ombre)"},
+            {hex:"#db8e07",label:"Pantalon"},{hex:"#934707",label:"Pantalon (ombre)"},
+            {hex:"#fcb791",label:"Peau"},{hex:"#ca7257",label:"Peau (ombre)"},
+            {hex:"#812f09",label:"Queue"},{hex:"#4c1310",label:"Queue (ombre)"},
+            {hex:"#312d3e",label:"Chaussure"},{hex:"#0e0a12",label:"Chaussure (ombre)"},
+            {hex:"#242424",label:"Cheveux"},
+          ],
+          SSJ:[
+            {hex:"#4164c2",label:"Gi bleu"},{hex:"#18256a",label:"Gi bleu (ombre)"},
+            {hex:"#d26580",label:"Poignet"},{hex:"#933e53",label:"Poignet (ombre)"},
+            {hex:"#c9c3d7",label:"Ceinture"},{hex:"#886874",label:"Ceinture (ombre)"},
+            {hex:"#db8e07",label:"Pantalon"},{hex:"#934707",label:"Pantalon (ombre)"},
+            {hex:"#fcb791",label:"Peau"},{hex:"#ca7257",label:"Peau (ombre)"},
+            {hex:"#812f09",label:"Queue"},{hex:"#4c1310",label:"Queue (ombre)"},
+            {hex:"#312d3e",label:"Chaussure"},{hex:"#0e0a12",label:"Chaussure (ombre)"},
+            {hex:"#f0d848",label:"Cheveux SSJ (clair)"},{hex:"#b48424",label:"Cheveux SSJ"},
+          ],
+          SSJ3:[
+            {hex:"#4164c2",label:"Gi bleu"},{hex:"#18256a",label:"Gi bleu (ombre)"},
+            {hex:"#d26580",label:"Poignet"},{hex:"#933e53",label:"Poignet (ombre)"},
+            {hex:"#c9c3d7",label:"Ceinture"},{hex:"#886874",label:"Ceinture (ombre)"},
+            {hex:"#db8e07",label:"Pantalon"},{hex:"#934707",label:"Pantalon (ombre)"},
+            {hex:"#fcb791",label:"Peau"},{hex:"#ca7257",label:"Peau (ombre)"},
+            {hex:"#812f09",label:"Queue"},{hex:"#4c1310",label:"Queue (ombre)"},
+            {hex:"#312d3e",label:"Chaussure"},{hex:"#0e0a12",label:"Chaussure (ombre)"},
+            {hex:"#f0d848",label:"Cheveux SSJ3 (clair)"},{hex:"#b48424",label:"Cheveux SSJ3 (long)"},
+          ],
+          SSJ4:[
+            {hex:"#e01a65",label:"Fourrure"},{hex:"#8e0718",label:"Fourrure (ombre)"},
+            {hex:"#ad910c",label:"Pantalon"},{hex:"#604e05",label:"Pantalon (ombre)"},{hex:"#2b1c07",label:"Pantalon (ombre 2)"},
+            {hex:"#4360c1",label:"Ceinture"},{hex:"#13206a",label:"Ceinture (ombre)"},
+            {hex:"#4e8c9a",label:"Poignet"},{hex:"#235661",label:"Poignet (ombre)"},
+            {hex:"#fccfbb",label:"Peau"},{hex:"#cf8b7d",label:"Peau (ombre)"},
+            {hex:"#35363a",label:"Chaussure"},{hex:"#0a0a0b",label:"Chaussure (ombre)"},
+            {hex:"#181818",label:"Cheveux"},
+          ],
+        }},
+    ]},
+
+  // ═══ GT — Vegeta ═══
+  { name:"Vegeta", subtitle:"GT", series:"GT", arc:"Dragon Ball GT",
+    search:"vegeta gt ssj4 super saiyan 4 fourrure rouge",
+    costumes:[
+      { label:"Tenue unique", image:"VGT_SSJ4", colors:[
+        {hex:"#d81860",label:"Fourrure (rouge)"},{hex:"#c00c48",label:"Fourrure (moyen)"},{hex:"#84000c",label:"Fourrure (sombre)"},
+        {hex:"#f0f0f0",label:"Pantalon (blanc)"},{hex:"#c8c8c8",label:"Pantalon (gris)"},
+        {hex:"#6c7884",label:"Gants / Bottes"},{hex:"#f4c4a0",label:"Peau"},{hex:"#181818",label:"Cheveux"},
+      ]},
+    ]},
+
+
+  // ═══ DB ═══
+  { name:"Goku", subtitle:"Enfant", series:"DB", arc:"Dragon Ball",
+    search:"goku enfant kid dragon ball db base nyoibo power pole baton",
+    costumes:[
+      { label:"Tenue unique", image:"Kid_Goku_DB", colors:[
+        {hex:"#e35f07",label:"Gi (orange)"},{hex:"#992307",label:"Gi (ombre)"},
+        {hex:"#0e1f32",label:"Sous-vêtement (bleu)"},{hex:"#111419",label:"Sous-vêtement (ombre)"},
+        {hex:"#f7bfa1",label:"Peau"},{hex:"#c77a64",label:"Peau (ombre)"},
+        {hex:"#ecedee",label:"Blanc"},{hex:"#b9977b",label:"Corde"},{hex:"#725d45",label:"Corde (ombre)"},
+        {hex:"#e7cd16",label:"Étui"},{hex:"#b29b0e",label:"Étui (ombre)"},
+        {hex:"#bc200b",label:"Bâton"},{hex:"#94150e",label:"Bâton (ombre)"},
+        {hex:"#0f0c0c",label:"Cheveux"},
+      ]},
+    ]},
+
+  // ═══ DAIMA ═══
+  { name:"Goku", subtitle:"Daima", series:"Daima", arc:"Dragon Ball Daima",
+    search:"goku daima base mini petit enfant chibi ssj ssj4 super saiyan fourrure rouge mini",
+    forms:["Base","SSJ","SSJ4 Mini"],
+    costumes:[
+      { label:"Tenue unique",
+        image:{ Base:"Goku_Daima_Base", SSJ:"Goku_Daima_SSJ", "SSJ4 Mini":"Goku_Daima_SSJ4_Mini" },
+        colors:{
+          Base:[
+            {hex:"#f2c79b",label:"Peau"},{hex:"#cf8259",label:"Peau (ombre)"},
+            {hex:"#e9900b",label:"Gi orange"},{hex:"#c35a06",label:"Gi orange (ombre)"},
+            {hex:"#0c59cb",label:"Vêtement bleu"},{hex:"#0b2b74",label:"Vêtement bleu (ombre)"},
+            {hex:"#f0f0f1",label:"Corde"},{hex:"#b1bbc7",label:"Corde (ombre)"},
+            {hex:"#a78129",label:"Étui"},{hex:"#745615",label:"Étui (ombre)"},
+            {hex:"#133986",label:"Bleu bottes"},{hex:"#091740",label:"Bleu bottes (ombre)"},
+            {hex:"#181818",label:"Cheveux"},
+          ],
+          SSJ:[
+            {hex:"#f2c79b",label:"Peau"},{hex:"#cf8259",label:"Peau (ombre)"},
+            {hex:"#e9900b",label:"Gi orange"},{hex:"#c35a06",label:"Gi orange (ombre)"},
+            {hex:"#0c59cb",label:"Vêtement bleu"},{hex:"#0b2b74",label:"Vêtement bleu (ombre)"},
+            {hex:"#f0f0f1",label:"Corde"},{hex:"#b1bbc7",label:"Corde (ombre)"},
+            {hex:"#a78129",label:"Étui"},{hex:"#745615",label:"Étui (ombre)"},
+            {hex:"#133986",label:"Bleu bottes"},{hex:"#091740",label:"Bleu bottes (ombre)"},
+            {hex:"#f0f084",label:"Cheveux SSJ (clair)"},{hex:"#c09c30",label:"Cheveux SSJ"},
+          ],
+          "SSJ4 Mini":[
+            {hex:"#f2c79a",label:"Peau"},{hex:"#cf8157",label:"Peau (ombre)"},
+            {hex:"#bd2c65",label:"Fourrure"},{hex:"#930e3c",label:"Fourrure (ombre)"},
+            {hex:"#e9900b",label:"Gi orange"},{hex:"#c35a06",label:"Gi orange (ombre)"},
+            {hex:"#0c59cb",label:"Vêtement bleu"},{hex:"#0b2b74",label:"Vêtement bleu (ombre)"},
+            {hex:"#133986",label:"Bleu bottes"},{hex:"#091740",label:"Bleu bottes (ombre)"},
+            {hex:"#f0f0f1",label:"Corde"},{hex:"#b1bbc7",label:"Corde (ombre)"},
+          ],
+        }},
+    ]},
+
+  { name:"Goku", subtitle:"Daima SSJ4", series:"Daima", arc:"Dragon Ball Daima",
+    search:"goku daima ssj4 super saiyan 4 fourrure rouge adulte",
+    costumes:[
+      { label:"Tenue unique", image:"Goku_Daima_SSJ4_Adulte", colors:[
+            {hex:"#f2c79a",label:"Peau"},{hex:"#cf8157",label:"Peau (ombre)"},
+            {hex:"#bd2c65",label:"Fourrure"},{hex:"#930e3c",label:"Fourrure (ombre)"},
+            {hex:"#e9900b",label:"Gi orange"},{hex:"#c35a06",label:"Gi orange (ombre)"},
+            {hex:"#0c59cb",label:"Vêtement bleu"},{hex:"#0b2b74",label:"Vêtement bleu (ombre)"},
+            {hex:"#123a87",label:"Bleu bottes"},{hex:"#072760",label:"Bleu bottes (ombre)"},
+            {hex:"#a60a0c",label:"Bottes (rouge)"},{hex:"#650708",label:"Bottes (rouge ombre)"},
+      ]},
+    ]},
+
+  // ═══ DAIMA — Vegeta Mini ═══
+  { name:"Vegeta", subtitle:"Daima Mini", series:"Daima", arc:"Dragon Ball Daima",
+    search:"vegeta daima mini petit enfant chibi base ssj ssj2 ssj3 super saiyan",
+    forms:["Base","SSJ","SSJ2","SSJ3"],
+    costumes:[
+      { label:"Tenue unique",
+        image:{ Base:"VGT_Daima_Mini_Base", SSJ:"VGT_Daima_Mini_SSJ", SSJ2:"VGT_Daima_Mini_SSJ2", SSJ3:"VGT_Daima_Mini_SSJ3" },
+        colors:{
+          Base:[
+            {hex:"#181854",label:"Combinaison (bleu sombre)"},{hex:"#2828a0",label:"Combinaison (bleu)"},
+            {hex:"#e8e0d0",label:"Armure (blanc)"},{hex:"#c8c0b0",label:"Armure (gris)"},
+            {hex:"#e0d8c8",label:"Gants / Bottes"},{hex:"#f4c4a0",label:"Peau"},
+            {hex:"#b87050",label:"Peau (ombre)"},{hex:"#181818",label:"Cheveux"},
+          ],
+          SSJ:[
+            {hex:"#181854",label:"Combinaison (bleu sombre)"},{hex:"#2828a0",label:"Combinaison (bleu)"},
+            {hex:"#e8e0d0",label:"Armure (blanc)"},{hex:"#c8c0b0",label:"Armure (gris)"},
+            {hex:"#e0d8c8",label:"Gants / Bottes"},{hex:"#e8c33c",label:"Cheveux SSJ"},
+            {hex:"#b89420",label:"Cheveux SSJ (ombre)"},{hex:"#f4c4a0",label:"Peau"},
+          ],
+          SSJ2:[
+            {hex:"#181854",label:"Combinaison (bleu sombre)"},{hex:"#2828a0",label:"Combinaison (bleu)"},
+            {hex:"#e8e0d0",label:"Armure (blanc)"},{hex:"#c8c0b0",label:"Armure (gris)"},
+            {hex:"#e0d8c8",label:"Gants / Bottes"},{hex:"#f0d040",label:"Cheveux SSJ2 (clair)"},
+            {hex:"#c8a428",label:"Cheveux SSJ2"},{hex:"#f4c4a0",label:"Peau"},
+          ],
+          SSJ3:[
+            {hex:"#181854",label:"Combinaison (bleu sombre)"},{hex:"#2828a0",label:"Combinaison (bleu)"},
+            {hex:"#e8e0d0",label:"Armure (blanc)"},{hex:"#c8c0b0",label:"Armure (gris)"},
+            {hex:"#e0d8c8",label:"Gants / Bottes"},{hex:"#f0d040",label:"Cheveux SSJ3 (clair)"},
+            {hex:"#c8a428",label:"Cheveux SSJ3 (long)"},{hex:"#f4c4a0",label:"Peau"},
+          ],
+        }},
+    ]},
+
+  // ═══ DAIMA — Vegeta SSJ3 ═══
+  { name:"Vegeta", subtitle:"Daima SSJ3", series:"Daima", arc:"Dragon Ball Daima",
+    search:"vegeta daima ssj3 super saiyan 3 adulte grand",
+    costumes:[
+      { label:"Tenue unique", image:"VGT_Daima_SSJ3", colors:[
+        {hex:"#181854",label:"Combinaison (bleu sombre)"},{hex:"#2828a0",label:"Combinaison (bleu)"},
+        {hex:"#e8e0d0",label:"Armure (blanc)"},{hex:"#c8c0b0",label:"Armure (gris)"},
+        {hex:"#e0d8c8",label:"Gants / Bottes"},{hex:"#f0d040",label:"Cheveux SSJ3 (clair)"},
+        {hex:"#c8a428",label:"Cheveux SSJ3 (long)"},{hex:"#f4c4a0",label:"Peau"},{hex:"#b87050",label:"Peau (ombre)"},
+      ]},
+    ]},
+
+];
+
+// ═══════ HELPERS ═══════
+const PLACEHOLDER = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
+function getImage(costume, form) {
+  if (typeof costume.image === 'string') return IMG[costume.image] || costume.image;
+  return IMG[costume.image[form]] || costume.image[form];
+}
+function getColors(costume, form) {
+  if (Array.isArray(costume.colors)) return costume.colors;
+  return costume.colors[form] || [];
+}
+function buildColorsHTML(colors) {
+  return colors.map(c =>
+    `<div class="color-swatch" style="background:${c.hex}" data-label="${c.label}" data-hex="${c.hex}" onclick="copyColor('${c.hex}')" onmouseenter="showColorInfo(this)" onmouseleave="hideColorInfo(this)"></div>`
+  ).join('');
+}
+
+function showColorInfo(el) {
+  const info = el.closest('.card-body').querySelector('.color-info');
+  if (info) info.textContent = el.dataset.label;
+}
+function hideColorInfo(el) {
+  const info = el.closest('.card-body').querySelector('.color-info');
+  if (info) info.textContent = '';
+}
+
+// ═══════ RENDER ═══════
+const mainContent = document.getElementById('mainContent');
+const seriesOrder = ["DB","DBZ","DBS","GT","Daima"];
+
+seriesOrder.forEach(seriesKey => {
+  const info = SERIES_INFO[seriesKey];
+  const seriesChars = characters.filter(c => c.series === seriesKey);
+  if (!seriesChars.length) return;
+  const section = document.createElement('section');
+  section.className = 'series-section';
+  section.dataset.series = seriesKey;
+  section.innerHTML = `<div class="series-header"><span class="series-tag" data-s="${seriesKey}">${info.tag}</span><span class="series-full-name">${info.full}</span></div>`;
+  const arcs = []; const arcMap = {};
+  seriesChars.forEach(c => { if (!arcMap[c.arc]) { arcMap[c.arc]=[]; arcs.push(c.arc); } arcMap[c.arc].push(c); });
+  arcs.forEach(arcName => {
+    const ah = document.createElement('div'); ah.className='arc-header'; ah.textContent=arcName; section.appendChild(ah);
+    const grid = document.createElement('div'); grid.className='cards-grid';
+    arcMap[arcName].forEach((ch,ci) => grid.appendChild(createCard(ch,ci)));
+    section.appendChild(grid);
+  });
+  mainContent.appendChild(section);
+});
+
+function createCard(char, index) {
+  const card = document.createElement('div');
+  card.className = 'char-card';
+  card.dataset.series = char.series;
+  card.dataset.search = (char.name+' '+char.arc+' '+char.search+' '+char.costumes.map(c=>c.label).join(' ')).toLowerCase();
+  card.style.animationDelay = `${index*0.04}s`;
+
+  const forms = char.forms || [];
+  const hasForms = forms.length > 1;
+  const defaultForm = forms[0] || 'Base';
+  const multi = char.costumes.length > 1;
+
+  // Build all images for all costumes × all forms
+  // Only the visible image gets real src; hidden ones use a tiny placeholder
+  
+  let imagesHTML = '';
+  char.costumes.forEach((c, ci) => {
+    if (hasForms) {
+      forms.forEach(form => {
+        const url = getImage(c, form);
+        const visible = ci === 0 && form === defaultForm;
+        imagesHTML += `<img data-src="${url}" src="${PLACEHOLDER}" class="costume-img${visible?'':' costume-hidden'}" data-idx="${ci}" data-form="${form}" loading="lazy">`;
+      });
+    } else {
+      const url = getImage(c, defaultForm);
+      imagesHTML += `<img data-src="${url}" src="${PLACEHOLDER}" class="costume-img${ci>0?' costume-hidden':''}" data-idx="${ci}" data-form="${defaultForm}" loading="lazy">`;
+    }
+  });
+
+  const dotsHTML = char.costumes.map((c,i) =>
+    `<button class="costume-dot${i===0?' active':''}" data-idx="${i}" title="${c.label}"></button>`
+  ).join('');
+
+  // Form pills: show all forms, active one highlighted
+  const formPillsHTML = hasForms
+    ? `<div class="form-pills">${forms.map(f =>
+        `<button class="form-pill${f===defaultForm?' active':''}" data-form="${f}">${f}</button>`
+      ).join('')}</div>`
+    : `<div class="form-pills no-forms"></div>`;
+
+  const colors = getColors(char.costumes[0], defaultForm);
+
+  const subtitleHTML = char.subtitle ? `<span class="char-subtitle">(${char.subtitle})</span>` : '';
+
+  card.innerHTML = `
+    <div class="card-image-wrapper">
+      ${imagesHTML}
+      <span class="card-series-badge" data-s="${char.series}">${char.series}</span>
+      <button class="costume-arrow prev${multi?'':' single-costume'}" onclick="switchCostume(this,-1)">‹</button>
+      <button class="costume-arrow next${multi?'':' single-costume'}" onclick="switchCostume(this,1)">›</button>
+      <div class="costume-nav${multi?'':' single'}">${dotsHTML}</div>
+    </div>
+    <div class="card-body">
+      <div class="char-name">${char.name}${subtitleHTML}</div>
+      <div class="char-variant"><span class="variant-label">${char.costumes[0].label}</span><span class="costume-counter">Tenue 1/${char.costumes.length}</span></div>
+      ${formPillsHTML}
+      <button class="colors-toggle" onclick="this.classList.toggle('open');this.parentElement.querySelector('.colors-row').classList.toggle('open')"><span class="toggle-arrow">▶</span> Couleurs</button>
+      <div class="color-info"></div>
+      <div class="colors-row">${buildColorsHTML(colors)}</div>
+    </div>`;
+
+  card._char = char;
+  card._currentIdx = 0;
+  card._currentForm = defaultForm;
+
+  // Apply fill mode on initial render if needed
+  const initFillForms = ['Oozaru'];
+  const initFillChar = ['Majin'].includes(char.subtitle);
+  if (initFillForms.includes(defaultForm) || initFillChar) {
+    card.querySelectorAll('.costume-img:not(.costume-hidden)').forEach(img => img.classList.add('img-fill'));
+  }
+
+  // Dot clicks
+  card.querySelectorAll('.costume-dot').forEach(dot => {
+    dot.addEventListener('click', () => setCostume(card, parseInt(dot.dataset.idx)));
+  });
+
+  // Form pills click
+  if (hasForms) {
+    card.querySelectorAll('.form-pill').forEach(pill => {
+      pill.addEventListener('click', () => {
+        const newForm = pill.dataset.form;
+        if (newForm === card._currentForm) return;
+        card._currentForm = newForm;
+        card.querySelectorAll('.form-pill').forEach(p => p.classList.toggle('active', p.dataset.form === newForm));
+        // Transformation flash
+        const wrapper = card.querySelector('.card-image-wrapper');
+        wrapper.className = wrapper.className.replace(/flash-[\w-]+/g, '').trim();
+        void wrapper.offsetWidth; // force reflow
+        wrapper.classList.add('flash-' + newForm.replace(/ /g,'-'));
+        if (newForm.startsWith('SSJ4')) spawnLightning(wrapper, 'SSJ3');
+        setTimeout(() => wrapper.classList.remove('flash-' + newForm.replace(/ /g,'-')), 600);
+        updateCardDisplay(card);
+        // Pulse on new visible image
+        const visImg = card.querySelector('.costume-img:not(.costume-hidden)');
+        if (visImg) {
+          visImg.classList.remove('transform-pulse');
+          void visImg.offsetWidth;
+          visImg.classList.add('transform-pulse');
+          visImg.addEventListener('animationend', () => visImg.classList.remove('transform-pulse'), {once:true});
+        }
+      });
+    });
+  }
+
+  return card;
+}
+
+function updateCardDisplay(card) {
+  const idx = card._currentIdx;
+  const form = card._currentForm;
+  const costume = card._char.costumes[idx];
+
+  // Show correct image & ensure it's loaded
+  card.querySelectorAll('.costume-img').forEach(img => {
+    const match = parseInt(img.dataset.idx) === idx && img.dataset.form === form;
+    img.classList.toggle('costume-hidden', !match);
+    if (match && img.dataset.src) {
+      img.src = img.dataset.src;
+      img.removeAttribute('data-src');
+      img.onload = () => img.classList.add('img-ready');
+      if (img.complete) img.classList.add('img-ready');
+    }
+  });
+
+  // Update variant label
+  card.querySelector('.variant-label').textContent = costume.label;
+  // Fill mode for large forms like Oozaru
+  const fillForms = ['Oozaru'];
+  // Fill mode for specific characters
+  const fillChars = ['Majin'];
+  const isFillChar = fillChars && fillChars.includes(card._char.subtitle);
+  card.querySelectorAll('.costume-img').forEach(img => {
+    img.classList.toggle('img-fill', (fillForms.includes(form) || isFillChar) && !img.classList.contains('costume-hidden'));
+  });
+  card.querySelector('.costume-counter').textContent = `Tenue ${idx+1}/${card._char.costumes.length}`;
+
+  // Update colors
+  card.querySelector('.colors-row').innerHTML = buildColorsHTML(getColors(costume, form));
+
+  // Update dots
+  card.querySelectorAll('.costume-dot').forEach(dot =>
+    dot.classList.toggle('active', parseInt(dot.dataset.idx) === idx)
+  );
+
+  // Update form pills
+  card.querySelectorAll('.form-pill').forEach(p =>
+    p.classList.toggle('active', p.dataset.form === form)
+  );
+}
+
+function setCostume(card, idx) {
+  const costumes = card._char.costumes;
+  if (idx < 0 || idx >= costumes.length) return;
+  card._currentIdx = idx;
+  updateCardDisplay(card);
+}
+
+function switchCostume(btn, dir) {
+  const card = btn.closest('.char-card');
+  const len = card._char.costumes.length;
+  let newIdx = card._currentIdx + dir;
+  if (newIdx < 0) newIdx = len - 1;
+  if (newIdx >= len) newIdx = 0;
+  setCostume(card, newIdx);
+}
+
+
+// ═══════ SEARCH & FILTER ═══════
+function updateCount() {
+  const v = document.querySelectorAll('.char-card:not(.hidden)').length;
+  document.getElementById('searchCount').textContent = `${v} personnage${v>1?'s':''} sur ${characters.length}`;
+}
+updateCount();
+
+// Debounced search for performance with many cards
+let searchTimeout;
+document.getElementById('searchInput').addEventListener('input', function() {
+  clearTimeout(searchTimeout);
+  const input = this;
+  searchTimeout = setTimeout(() => {
+    const q = input.value.toLowerCase().trim();
+    let any = false;
+    document.querySelectorAll('.char-card').forEach(card => {
+      const m = !q || card.dataset.search.includes(q);
+      card.classList.toggle('hidden', !m);
+      if (m) any = true;
+    });
+    document.querySelectorAll('.series-section').forEach(s => s.classList.toggle('hidden', s.querySelectorAll('.char-card:not(.hidden)').length===0));
+    document.querySelectorAll('.arc-header').forEach(ah => {
+      const grid = ah.nextElementSibling;
+      if (grid && grid.classList.contains('cards-grid')) ah.style.display = grid.querySelectorAll('.char-card:not(.hidden)').length===0?'none':'';
+    });
+    document.getElementById('noResults').classList.toggle('visible', !any);
+    updateCount();
+  }, 150);
+});
+
+document.querySelectorAll('.series-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.series-btn').forEach(b=>b.classList.remove('active'));
+    this.classList.add('active');
+    const s = this.dataset.series;
+    if(s==='all'){
+      document.querySelectorAll('.series-section').forEach(x=>x.classList.remove('hidden'));
+      document.querySelectorAll('.char-card').forEach(c=>c.classList.remove('hidden'));
+      document.querySelectorAll('.arc-header').forEach(ah=>ah.style.display='');
+    } else {
+      document.querySelectorAll('.series-section').forEach(x=>x.classList.toggle('hidden',x.dataset.series!==s));
+      document.querySelectorAll('.char-card').forEach(c=>c.classList.toggle('hidden',c.dataset.series!==s));
+      document.querySelectorAll('.arc-header').forEach(ah=>ah.style.display='');
+    }
+    const si=document.getElementById('searchInput');
+    if(si.value.trim()) si.dispatchEvent(new Event('input'));
+    updateCount();
+  });
+});
+
+function copyColor(hex) {
+  navigator.clipboard.writeText(hex).then(() => {
+    const t=document.getElementById('toast');
+    t.textContent=`${hex} copié !`;
+    t.classList.add('show');
+    setTimeout(()=>t.classList.remove('show'),2000);
+  });
+}
+
+
+function spawnLightning(wrapper, intensity) {
+  // Remove old
+  const old = wrapper.querySelector('.lightning-container');
+  if (old) old.remove();
+
+  const container = document.createElement('div');
+  container.className = 'lightning-container';
+
+  const count = intensity === 'SSJ3' ? 7 : 4;
+  const branchCount = intensity === 'SSJ3' ? 10 : 5;
+
+  // Main bolts
+  for (let i = 0; i < count; i++) {
+    const bolt = document.createElement('div');
+    bolt.className = 'lightning';
+    const left = 15 + Math.random() * 70;
+    const top = 5 + Math.random() * 30;
+    const h = 25 + Math.random() * 40;
+    const rot = -25 + Math.random() * 50;
+    const delay = Math.random() * .2;
+    const dur = .25 + Math.random() * .2;
+    bolt.style.cssText = `left:${left}%;top:${top}%;height:${h}%;--lt-rot:${rot}deg;--lt-delay:${delay}s;--lt-dur:${dur}s`;
+    container.appendChild(bolt);
+  }
+
+  // Branch sparks
+  for (let i = 0; i < branchCount; i++) {
+    const branch = document.createElement('div');
+    branch.className = 'lightning-branch';
+    const left = 10 + Math.random() * 80;
+    const top = 10 + Math.random() * 60;
+    const h = 8 + Math.random() * 18;
+    const rot = -50 + Math.random() * 100;
+    const delay = Math.random() * .25;
+    const dur = .12 + Math.random() * .15;
+    branch.style.cssText = `left:${left}%;top:${top}%;height:${h}%;--br-rot:${rot}deg;--br-delay:${delay}s;--br-dur:${dur}s`;
+    container.appendChild(branch);
+  }
+
+  wrapper.appendChild(container);
+  setTimeout(() => container.remove(), 700);
+}
+
+
+// Sticky nav shadow on scroll
+const navSticky = document.getElementById('navSticky');
+if (navSticky) {
+  window.addEventListener('scroll', () => {
+    navSticky.classList.toggle('scrolled', window.scrollY > 100);
+  }, { passive: true });
+}
+
+// ═══════ LAZY LOADING (2 tiers, staggered, fade-in) ═══════
+const loaded = new WeakSet();
+const preloaded = new Set();
+
+// Tier 1: Load visible image immediately
+function loadVisible(card) {
+  const img = card.querySelector('.costume-img:not(.costume-hidden)');
+  if (img && img.dataset.src) {
+    img.src = img.dataset.src;
+    img.removeAttribute('data-src');
+    img.onload = () => img.classList.add('img-ready');
+    if (img.complete) img.classList.add('img-ready');
+  }
+}
+
+// Tier 2: Preload ALL images for this card (other costumes, other forms)
+function preloadCard(card) {
+  if (loaded.has(card)) return;
+  loaded.add(card);
+
+  // Load remaining DOM images
+  card.querySelectorAll('img[data-src]').forEach(img => {
+    img.src = img.dataset.src;
+    img.removeAttribute('data-src');
+    img.onload = () => img.classList.add('img-ready');
+    if (img.complete) img.classList.add('img-ready');
+  });
+
+  // Preload form/costume URLs not in DOM (via Image() cache)
+  const ch = card._char;
+  if (!ch) return;
+  const forms = ch.forms || ['Base'];
+  const batch = [];
+  ch.costumes.forEach(c => {
+    forms.forEach(f => {
+      const key = typeof c.image === 'string' ? c.image : (c.image[f] || '');
+      const url = IMG[key] || key;
+      if (url && !preloaded.has(url)) { preloaded.add(url); batch.push(url); }
+    });
+  });
+  // Stagger preloads: 2 at a time, 80ms apart to avoid network congestion
+  batch.forEach((url, i) => {
+    setTimeout(() => { new Image().src = url; }, i * 80);
+  });
+}
+
+// Two observers: tight margin for visible, wide margin for preload
+const visibleObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { loadVisible(e.target); visibleObs.unobserve(e.target); }
+  });
+}, { rootMargin: '100px 0px 100px 0px' });
+
+const preloadObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      // Use requestIdleCallback if available, else setTimeout
+      const fn = () => preloadCard(e.target);
+      if ('requestIdleCallback' in window) requestIdleCallback(fn, { timeout: 300 });
+      else setTimeout(fn, 50);
+      preloadObs.unobserve(e.target);
+    }
+  });
+}, { rootMargin: '600px 0px 600px 0px' });
+
+function observeCards() {
+  document.querySelectorAll('.char-card').forEach(c => {
+    if (!loaded.has(c)) { visibleObs.observe(c); preloadObs.observe(c); }
+  });
+}
+observeCards();
+
+// Re-observe after search/filter (cards may re-enter viewport)
+const origUpdateCount = updateCount;
+updateCount = function() {
+  origUpdateCount();
+  observeCards();
+};
+
+
+</script>
+</body>
+</html>
